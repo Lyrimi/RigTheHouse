@@ -1,0 +1,112 @@
+{
+    "version": 1,
+    "name": "MainActionMap",
+    "maps": [
+        {
+            "name": "Main",
+            "id": "a19003b6-4a74-422a-b92f-62b5c90ad153",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "db5d469d-e4ad-46e1-9ebd-78e01a302ea0",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                },
+                {
+                    "name": "Test",
+                    "type": "Value",
+                    "id": "bf05d7c1-6c01-460c-a358-55f0bca8fb55",
+                    "expectedControlType": "Integer",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "2D Vector",
+                    "id": "2c23e1a4-cc5a-4cf6-a716-8d0395301353",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "f8e45c2c-f104-4d9d-9e37-a9c3b003ead1",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "940745e2-c0c1-42d0-91ab-0c837e053e19",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "2afa30a3-194b-4042-a77a-ee6e4a2ff0e1",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "83c8a06a-f5ca-4f0b-8895-625e404a4c42",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Custom",
+                    "id": "062493e9-e6e5-4159-97bb-7ae6e4cb8be8",
+                    "path": "Custom(NumParameter=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Test",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "firstPart",
+                    "id": "374eeccb-74bc-4914-84d0-18b246aa6444",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Test",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
