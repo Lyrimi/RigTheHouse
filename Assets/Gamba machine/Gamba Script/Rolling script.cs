@@ -29,16 +29,37 @@ public class Rollingscript : MonoBehaviour
         rolling = false;
         for(int i = 0; i < Spins; i++)
         {
-            Mathf.Lerp(0.01f, 2, 0.1f);
-            yield return new WaitForSeconds(i);
+           
+            yield return new WaitForSeconds(0.1f);
             Debug.Log("Donestuff");
             foreach(var gameObject in slots)
             {
                 SpriteRenderer spriterenderer = gameObject.GetComponent<SpriteRenderer>();
                 int rand = Random.Range(0, sprites.Count);
-                spriterenderer.sprite = sprites[rand];
+                if (gameObject.GetComponent<gambachildscript>().rolling)
+                {
+                    spriterenderer.sprite = sprites[rand];
+                }
                 
+                if (i > 80)
+                {
+                    slots[0].GetComponent<gambachildscript>().rolling = false;
+                    Debug.Log("80");
+                }
+                if (i > 90)
+                {
+                    slots[0].GetComponent<gambachildscript>().rolling = false;
+                    Debug.Log("90");
+                }
+                if (i >= 100)
+                {
+                    slots[0].GetComponent<gambachildscript>().rolling = false;
+                    Debug.Log("100");
+                }
             }
+            float random = Random.Range(1, 3);
+
+
         }
         
     }

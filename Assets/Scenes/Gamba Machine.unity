@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 95126083}
   - component: {fileID: 95126084}
+  - component: {fileID: 95126085}
   m_Layer: 0
   m_Name: Slot 2
   m_TagString: Untagged
@@ -211,6 +212,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &95126085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95126082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
+  rolling: 1
 --- !u!1 &508627189
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,8 +255,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1550373958}
   - {fileID: 839664300}
+  - {fileID: 1550373958}
   - {fileID: 95126083}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -266,8 +280,8 @@ MonoBehaviour:
   - {fileID: -2135585597343286014, guid: 5aa8b770bc43046bc8d993d0d5b7f4a5, type: 3}
   - {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   slots:
-  - {fileID: 1550373956}
   - {fileID: 839664299}
+  - {fileID: 1550373956}
   - {fileID: 95126082}
   spins: 10
 --- !u!1 &548784083
@@ -417,8 +431,9 @@ GameObject:
   m_Component:
   - component: {fileID: 839664300}
   - component: {fileID: 839664301}
+  - component: {fileID: 839664302}
   m_Layer: 0
-  m_Name: Slot 1
+  m_Name: Slot 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -499,6 +514,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &839664302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839664299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
+  rolling: 1
 --- !u!1 &1550373956
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,8 +537,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1550373958}
   - component: {fileID: 1550373957}
+  - component: {fileID: 1550373959}
   m_Layer: 0
-  m_Name: Slot 0
+  m_Name: Slot 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -591,6 +620,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 508627190}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1550373959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550373956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
+  rolling: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
