@@ -2,16 +2,18 @@ using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
-public class CardSway : MonoBehaviour
+[RequireComponent(typeof(ItemData))]
+public class ItemShake : MonoBehaviour
 {
     bool _dirtyPoint = true;
-    [SerializeField] private float _lerpTime = 1f;
+    [SerializeField] public float LerpTime = 1f;
     [SerializeField] private float _maxAngle = 45;
+
+    Quaternion tRot;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        tRot = Quaternion.Euler(0, 0, _maxAngle);
     }
 
     // Update is called once per frame
@@ -32,14 +34,19 @@ public class CardSway : MonoBehaviour
     void OnDisable()
     {
         StopAllCoroutines();
-        StartCoroutine(Wiggle(Quaternion.identity));
+        if (gameObject.activeSelf)
+        {
+            StartCoroutine(Wiggle(Quaternion.identity));
+        }
+
     }
 
-
+    Vector3 axis = new(0, 0, 1);
     void UpdateWigglePoint()
     {
-        Vector3 axis = Random.onUnitSphere;
+        axis.Scale(new(-1, -1, -1));
         _dirtyPoint = false;
+
         StartCoroutine(Wiggle(Quaternion.AngleAxis(_maxAngle, axis)));
     }
 
@@ -48,10 +55,10 @@ public class CardSway : MonoBehaviour
         Quaternion startRot = transform.rotation;
         float curTime = 0;
 
-        while (curTime < _lerpTime)
+        while (curTime < LerpTime)
         {
 
-            float frac = curTime / _lerpTime;
+            float frac = curTime / LerpTime;
             float value = Mathf.SmoothStep(0, 1, frac);
             Quaternion lerpRot = Quaternion.Lerp(startRot, targetRot, value);
             transform.rotation = lerpRot;

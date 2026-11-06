@@ -1,24 +1,25 @@
 using System.Collections;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 using UnityEngine.UIElements.Experimental;
-[RequireComponent(typeof(CardData))]
-public class CardSelectVisual : MonoBehaviour
+[RequireComponent(typeof(ItemData))]
+public class ItemSelectVisual : MonoBehaviour
 {
     //[SerializeField] private AnimationCurve _lerpCurve;
     [SerializeField] private bool _debugButton;
     [SerializeField] private float _lerpSize = 1;
 
     [SerializeField] private float _lerpTime = 1;
-    CardData _cardData;
+    ItemData _itemData;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     float _startSize;
     void Start()
     {
         _startSize = transform.localScale.x;
-        _cardData = GetComponent<CardData>();
-        _cardData.OnSelect += OnSelect;
-        _cardData.OnDeselect += OnDeselect;
+        _itemData = GetComponent<ItemData>();
+        _itemData.OnSelect += OnSelect;
+        _itemData.OnDeselect += OnDeselect;
     }
 
     void OnSelect()
@@ -29,6 +30,10 @@ public class CardSelectVisual : MonoBehaviour
     }
     void OnDeselect()
     {
+        if (gameObject == null)
+        {
+            return;
+        }
         StopAllCoroutines();
         StartCoroutine(SpringBounce(transform.localScale.x, _startSize));
     }
@@ -65,8 +70,4 @@ public class CardSelectVisual : MonoBehaviour
             transform.localScale = new(cSize, cSize, cSize);
         }
     }
-
-
-
-
 }

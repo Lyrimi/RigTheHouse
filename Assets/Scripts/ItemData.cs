@@ -2,8 +2,9 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CardData : MonoBehaviour
+public class ItemData : MonoBehaviour
 {
+    public Action Activate;
     public bool IsSelected
     {
         set
@@ -43,9 +44,6 @@ public class CardData : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_debugOverideSlected != IsSelected)
-        {
-            IsSelected = _debugOverideSlected;
-        }
+
     }
 }
