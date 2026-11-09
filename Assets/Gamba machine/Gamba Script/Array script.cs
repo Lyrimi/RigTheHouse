@@ -1,17 +1,18 @@
+using System;
 using UnityEngine;
 
 public class Arrayscript : MonoBehaviour
 {
-
-
-    public Rollingscript ToCall;
+    [SerializeField]
+    EmblemMovementScript[] EmblemArray;
+    
 
     public bool start;
 
     [SerializeField]
     int[] Array;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         
@@ -20,7 +21,12 @@ public class Arrayscript : MonoBehaviour
     {
         if (start)
         {
-            ToCall.Ossamabinarray(Array);
+            
+            foreach (EmblemMovementScript emblem in EmblemArray) 
+            {
+                emblem.Restart();
+            }
+            SlotSpriteManager.Instance.SetEndSprite(Array);
             start = false;
         }
         

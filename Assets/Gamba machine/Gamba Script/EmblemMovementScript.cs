@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class EmblemMovementScript : MonoBehaviour
 {
-
+    [SerializeField]
+    bool isMiddle;
     
     static float speed = 13;
 
@@ -12,6 +13,10 @@ public class EmblemMovementScript : MonoBehaviour
     [SerializeField]
     float speedMinVar;
 
+
+    public Sprite endsprite;
+    
+    SpriteRenderer spriteRenderer;
 
     float restartThreshold = -4;
     float restartPosY= 2;
@@ -30,6 +35,7 @@ public class EmblemMovementScript : MonoBehaviour
     {
         stopY = transform.position.y;
         speed = 13;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -53,6 +59,7 @@ public class EmblemMovementScript : MonoBehaviour
             newPosition.y = stopY;
             transform.position = newPosition;
             speed += Random.Range(speedMinVar,speedMaxVar);
+            
             state = RollState.Done;
             return;
         }
@@ -65,6 +72,10 @@ public class EmblemMovementScript : MonoBehaviour
             transform.position = newPosition;
             NewRandomSprite();
             rolls++;
+            if(rolls >= maxrolls && isMiddle)
+            {
+                SetEndSprite();
+            }
         }
         
     }
@@ -72,9 +83,24 @@ public class EmblemMovementScript : MonoBehaviour
     private void NewRandomSprite()
     {
         int rand = Random.Range(0, SlotSpriteManager.Instance.Sprites.Count);
-        gameObject.GetComponent<SpriteRenderer>().sprite = SlotSpriteManager.Instance.Sprites[rand];
+        spriteRenderer.sprite = SlotSpriteManager.Instance.Sprites[rand];
         
     }
      enum RollState { Rolling, Done };
+
+    public void SetEndSprite()
+    {
+
+        spriteRenderer.sprite = endsprite;
+        
+     
+    }
+    public void Restart()
+    {
+        speed = 13;
+        rolls = 0;
+        state = RollState.Rolling;
+    }
+
 }
 

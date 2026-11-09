@@ -220,12 +220,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 95126082}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
-  rolling: 1
+  rolling: 0
   rolls: 0
   maxRolls: 30
   Decider: {fileID: 95126082}
@@ -242,8 +242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586b7594861a9ba4386e3ab3e7053143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmblemMovementScript
+  isMiddle: 0
   speedMaxVar: 3
   speedMinVar: 0.5
+  endsprite: {fileID: 0}
   maxrolls: 5
 --- !u!1 &269385748
 GameObject:
@@ -286,12 +288,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269385748}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
-  rolling: 1
+  rolling: 0
   rolls: 0
   maxRolls: 33
   Decider: {fileID: 269385748}
@@ -368,8 +370,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586b7594861a9ba4386e3ab3e7053143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmblemMovementScript
+  isMiddle: 0
   speedMaxVar: 3
   speedMinVar: 0.5
+  endsprite: {fileID: 0}
   maxrolls: 14
 --- !u!1 &310452479
 GameObject:
@@ -412,12 +416,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310452479}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
-  rolling: 1
+  rolling: 0
   rolls: 0
   maxRolls: 31
   Decider: {fileID: 556421865}
@@ -494,8 +498,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586b7594861a9ba4386e3ab3e7053143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmblemMovementScript
+  isMiddle: 0
   speedMaxVar: 3
   speedMinVar: 0.5
+  endsprite: {fileID: 0}
   maxrolls: 8
 --- !u!1 &508627189
 GameObject:
@@ -628,9 +634,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c896c432a9ca01d40bb3096658eb65a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Arrayscript
-  ToCall: {fileID: 508627191}
+  EmblemArray:
+  - {fileID: 839664304}
+  - {fileID: 1550373961}
+  - {fileID: 95126087}
+  - {fileID: 310452484}
+  - {fileID: 1276731823}
+  - {fileID: 556421870}
+  - {fileID: 766494879}
+  - {fileID: 1479593693}
+  - {fileID: 2110914980}
+  - {fileID: 1047151167}
+  - {fileID: 1926119633}
+  - {fileID: 269385753}
+  - {fileID: 660528293}
+  - {fileID: 957263072}
+  - {fileID: 1533491374}
   start: 1
-  Array: 0000000001000000020000000300000004000000i
+  Array: 0000000000000000000000000000000000000000i
 --- !u!1 &529195228
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,12 +922,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556421865}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
-  rolling: 1
+  rolling: 0
   rolls: 0
   maxRolls: 31
   Decider: {fileID: 556421865}
@@ -983,8 +1004,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586b7594861a9ba4386e3ab3e7053143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmblemMovementScript
+  isMiddle: 0
   speedMaxVar: 3
   speedMinVar: 0.5
+  endsprite: {fileID: 0}
   maxrolls: 8
 --- !u!1 &660528288
 GameObject:
@@ -1027,12 +1050,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660528288}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
-  rolling: 1
+  rolling: 0
   rolls: 0
   maxRolls: 34
   Decider: {fileID: 1533491369}
@@ -1109,8 +1132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586b7594861a9ba4386e3ab3e7053143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmblemMovementScript
+  isMiddle: 0
   speedMaxVar: 3
   speedMinVar: 0.5
+  endsprite: {fileID: 0}
   maxrolls: 17
 --- !u!1 &766494874
 GameObject:
@@ -1153,12 +1178,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766494874}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
-  rolling: 1
+  rolling: 0
   rolls: 0
   maxRolls: 32
   Decider: {fileID: 2110914975}
@@ -1235,8 +1260,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586b7594861a9ba4386e3ab3e7053143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmblemMovementScript
+  isMiddle: 0
   speedMaxVar: 3
   speedMinVar: 0.5
+  endsprite: {fileID: 0}
   maxrolls: 11
 --- !u!1 &839664299
 GameObject:
@@ -1339,12 +1366,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 839664299}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
-  rolling: 1
+  rolling: 0
   rolls: 0
   maxRolls: 30
   Decider: {fileID: 95126082}
@@ -1361,8 +1388,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586b7594861a9ba4386e3ab3e7053143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmblemMovementScript
+  isMiddle: 0
   speedMaxVar: 3
   speedMinVar: 0.5
+  endsprite: {fileID: 0}
   maxrolls: 5
 --- !u!1 &957263067
 GameObject:
@@ -1405,12 +1434,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 957263067}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
-  rolling: 1
+  rolling: 0
   rolls: 0
   maxRolls: 34
   Decider: {fileID: 1533491369}
@@ -1487,8 +1516,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586b7594861a9ba4386e3ab3e7053143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmblemMovementScript
+  isMiddle: 1
   speedMaxVar: 3
   speedMinVar: 0.5
+  endsprite: {fileID: 0}
   maxrolls: 17
 --- !u!1 &1047151162
 GameObject:
@@ -1531,12 +1562,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047151162}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
-  rolling: 1
+  rolling: 0
   rolls: 0
   maxRolls: 33
   Decider: {fileID: 269385748}
@@ -1613,8 +1644,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586b7594861a9ba4386e3ab3e7053143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmblemMovementScript
+  isMiddle: 0
   speedMaxVar: 3
   speedMinVar: 0.5
+  endsprite: {fileID: 0}
   maxrolls: 14
 --- !u!1 &1276731818
 GameObject:
@@ -1657,12 +1690,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276731818}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
-  rolling: 1
+  rolling: 0
   rolls: 0
   maxRolls: 31
   Decider: {fileID: 556421865}
@@ -1739,8 +1772,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586b7594861a9ba4386e3ab3e7053143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmblemMovementScript
+  isMiddle: 1
   speedMaxVar: 3
   speedMinVar: 0.5
+  endsprite: {fileID: 0}
   maxrolls: 8
 --- !u!1 &1479593688
 GameObject:
@@ -1783,12 +1818,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1479593688}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
-  rolling: 1
+  rolling: 0
   rolls: 0
   maxRolls: 32
   Decider: {fileID: 2110914975}
@@ -1865,8 +1900,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586b7594861a9ba4386e3ab3e7053143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmblemMovementScript
+  isMiddle: 1
   speedMaxVar: 3
   speedMinVar: 0.5
+  endsprite: {fileID: 0}
   maxrolls: 11
 --- !u!1 &1533491369
 GameObject:
@@ -1909,12 +1946,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533491369}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
-  rolling: 1
+  rolling: 0
   rolls: 0
   maxRolls: 34
   Decider: {fileID: 1533491369}
@@ -1991,8 +2028,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586b7594861a9ba4386e3ab3e7053143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmblemMovementScript
+  isMiddle: 0
   speedMaxVar: 3
   speedMinVar: 0.5
+  endsprite: {fileID: 0}
   maxrolls: 17
 --- !u!1 &1550373956
 GameObject:
@@ -2095,12 +2134,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550373956}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
-  rolling: 1
+  rolling: 0
   rolls: 0
   maxRolls: 30
   Decider: {fileID: 95126082}
@@ -2117,8 +2156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586b7594861a9ba4386e3ab3e7053143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmblemMovementScript
+  isMiddle: 1
   speedMaxVar: 3
   speedMinVar: 0.5
+  endsprite: {fileID: 0}
   maxrolls: 5
 --- !u!1 &1926119628
 GameObject:
@@ -2161,12 +2202,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926119628}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
-  rolling: 1
+  rolling: 0
   rolls: 0
   maxRolls: 33
   Decider: {fileID: 269385748}
@@ -2243,8 +2284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586b7594861a9ba4386e3ab3e7053143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmblemMovementScript
+  isMiddle: 1
   speedMaxVar: 3
   speedMinVar: 0.5
+  endsprite: {fileID: 0}
   maxrolls: 14
 --- !u!1 &1940573468
 GameObject:
@@ -2374,6 +2417,12 @@ MonoBehaviour:
   - {fileID: 8595329116794754664, guid: c82749ea1ca8dfd458f88177e873d94d, type: 3}
   - {fileID: -4857014695203704196, guid: adb82bd5b86045249a8fd19d503941ae, type: 3}
   - {fileID: 4804356480632929948, guid: 8f791f48d86a3e44d87c950a520885b3, type: 3}
+  Middleslots:
+  - {fileID: 1550373961}
+  - {fileID: 1276731823}
+  - {fileID: 1479593693}
+  - {fileID: 1926119633}
+  - {fileID: 957263072}
 --- !u!4 &2047979993
 Transform:
   m_ObjectHideFlags: 0
@@ -2382,7 +2431,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047979991}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.8958, y: -0.83426, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2430,12 +2479,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110914975}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4481772587ae8de4696d9bded8b9eaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gambachildscript
-  rolling: 1
+  rolling: 0
   rolls: 0
   maxRolls: 32
   Decider: {fileID: 2110914975}
@@ -2512,8 +2561,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586b7594861a9ba4386e3ab3e7053143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EmblemMovementScript
+  isMiddle: 0
   speedMaxVar: 3
   speedMinVar: 0.5
+  endsprite: {fileID: 0}
   maxrolls: 11
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
