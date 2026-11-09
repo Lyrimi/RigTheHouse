@@ -9,10 +9,15 @@ public class EmblemMovementScript : MonoBehaviour
     static float speed = 13;
 
     [SerializeField]
+    float particleYOffSet;
+
+    [SerializeField]
     float speedMaxVar;
     [SerializeField]
     float speedMinVar;
 
+    [SerializeField]
+    ParticleSystem Particle;
 
     public Sprite endsprite;
     
@@ -59,7 +64,15 @@ public class EmblemMovementScript : MonoBehaviour
             newPosition.y = stopY;
             transform.position = newPosition;
             speed += Random.Range(speedMinVar,speedMaxVar);
-            
+            if (isMiddle)
+            {
+                Vector3 particlePos = Particle.transform.position;
+                particlePos.y = newPosition.y -VarScript.instance.particleYOffSet;
+                Debug.Log($"{VarScript.instance.particleYOffSet}");
+                particlePos.x = newPosition.x;
+                Particle.transform.position = particlePos;
+                Particle.Play();
+            }
             state = RollState.Done;
             return;
         }
