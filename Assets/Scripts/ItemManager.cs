@@ -8,6 +8,8 @@ public class ItemManager : MonoBehaviour
 
     [SerializeField] public List<ItemData> _items = new();
     [SerializeField] private Transform _cardPackMove;
+    [SerializeField] private ItemManager _carditemManager;
+    [SerializeField] private Transform _carditemstartPos;
     private InputAction _moveAction;
     private InputAction _sellectAction;
 
@@ -27,9 +29,14 @@ public class ItemManager : MonoBehaviour
     {
     }
 
+    public void Init()
+    {
+        _items[index].IsSelected = true;
+    }
+
     void OnEnable()
     {
-        if (_items[index].enabled)
+        if (_items[index].gameObject.activeInHierarchy)
         {
             _items[index].IsSelected = true;
         }
@@ -37,7 +44,7 @@ public class ItemManager : MonoBehaviour
     }
     void OnDisable()
     {
-        if (_items[index].enabled)
+        if (_items[index].gameObject.activeInHierarchy)
         {
             _items[index].IsSelected = false;
         }
@@ -47,9 +54,18 @@ public class ItemManager : MonoBehaviour
 
     void Move(InputAction.CallbackContext callbackContext)
     {
+        if (gameObject.activeInHierarchy == false)
+        {
+            return;
+        }
         Vector2 value = callbackContext.ReadValue<Vector2>();
+        Move((int)value.x);
+    }
+
+    public void Move(int value)
+    {
         _items[index].IsSelected = false;
-        index = value.x switch
+        index = value switch
         {
             1 => Mathf.Min(index + 1, _items.Count - 1),
             -1 => Mathf.Max(index - 1, 0),
@@ -60,11 +76,18 @@ public class ItemManager : MonoBehaviour
 
     void SelectItem(InputAction.CallbackContext callbackContext)
     {
+        if (gameObject.activeInHierarchy == false)
+        {
+            return;
+        }
         print("Item Selcted");
         var selectItem = _items[index].GetComponent<CardPackSelect>();
         if (selectItem)
         {
             selectItem.MovePoint = _cardPackMove;
+            selectItem.StartPos = _carditemstartPos;
+            selectItem.CarditemManager = _carditemManager;
+            selectItem.ShopItemManager = this;
         }
         _items[index].Activate?.Invoke();
     }

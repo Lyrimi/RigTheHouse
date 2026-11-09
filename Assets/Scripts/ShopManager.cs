@@ -8,6 +8,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private float _distance;
     [SerializeField] private Transform _startPos;
     [SerializeField] private ItemManager _itemManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +31,7 @@ public class ShopManager : MonoBehaviour
             spawnPos.x = cx;
             ItemData item = Instantiate(_prefabs[0], spawnPos, Quaternion.identity).GetComponent<ItemData>();
             _itemManager._items.Insert(_itemManager._items.Count - 1, item);
+
 
         }
     }
