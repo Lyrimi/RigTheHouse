@@ -1,4 +1,6 @@
 
+
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +9,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UIElements;
 using UnityEngine.XR;
 
 
@@ -18,6 +21,8 @@ public class Rollingscript : MonoBehaviour
     public int spins;
     bool reSend;
     public float objVel;
+
+    public int endstep;
 
     public List<int> predetermined;
     public List<Vector3> Startpos;
@@ -31,65 +36,94 @@ public class Rollingscript : MonoBehaviour
         {
             Startpos.Add(g.transform.position);
         }
-        Spin();
-
-    }
-    public void Spin()
-    {
-        for (int s = 0; s < 3; s++) 
-        {
-
-            int rand = Random.Range(0, sprites.Count);
-            predetermined.Add(rand);
-        }
         
 
     }
-    
+  
+    public void Ossamabinarray(int[] Numbers)
+    {
+        
 
+        rolling = true;
 
+        StartCoroutine(Endstep(Numbers));
+        
+    }
+
+    public IEnumerator Endstep(int[] Numero)
+    {
+        
+        yield return new WaitUntil(() => slots[5].GetComponent<gambachildscript>().rolls == 29);
+        slots[5].GetComponent<SpriteRenderer>().sprite = sprites[Numero[0]];
+        
+        yield return new WaitUntil(() => slots[6].GetComponent<gambachildscript>().rolls == 30);
+        slots[6].GetComponent<SpriteRenderer>().sprite = sprites[Numero[1]];
+        
+        yield return new WaitUntil(() => slots[7].GetComponent<gambachildscript>().rolls == 31);
+        slots[7].GetComponent<SpriteRenderer>().sprite = sprites[Numero[2]];
+       
+        yield return new WaitUntil(() => slots[8].GetComponent<gambachildscript>().rolls == 32);
+        slots[8].GetComponent<SpriteRenderer>().sprite = sprites[Numero[3]];
+        
+        yield return new WaitUntil(() => slots[9].GetComponent<gambachildscript>().rolls == 33);
+        slots[9].GetComponent<SpriteRenderer>().sprite = sprites[Numero[4]];
+        
+        
+    }
 
 
     public IEnumerator Stuff(int Spins)
     {
         //InstaciateRollers();
         rolling = false;
+       
 
-
-
+        yield return new WaitForEndOfFrame();
 
         for (int s = 0; s < slots.Count; s++)
         {
+
             slots[s].GetComponent<Rigidbody2D>().linearVelocityY = -objVel;
 
         }
         yield return new WaitForEndOfFrame();
-        for (int i = 0; i < Spins; i++)
+        foreach (GameObject ge in slots)
         {
 
+            ge.GetComponent<gambachildscript>().rolling = true;
+
+        }
+
+
+        for (int i = 0; i < Spins; i++)
+        {
+            endstep = i;
 
 
             foreach (GameObject gameObject in slots)
             {
 
-
+                
 
 
 
                 if (gameObject.GetComponent<gambachildscript>().Decider.GetComponent<gambachildscript>().maxRolls == gameObject.GetComponent<gambachildscript>().Decider.GetComponent<gambachildscript>().rolls)
                 {
-                        Debug.Log(1);
+                    
+                    Debug.Log(1);
                     slots[gameObject.GetComponent<gambachildscript>().Decider.GetComponent<gambachildscript>().index +5].GetComponent<Rigidbody2D>().linearVelocityY = 0;
                     slots[gameObject.GetComponent<gambachildscript>().Decider.GetComponent<gambachildscript>().index +10].GetComponent<Rigidbody2D>().linearVelocityY = 0;
                     slots[gameObject.GetComponent<gambachildscript>().Decider.GetComponent<gambachildscript>().index].GetComponent<Rigidbody2D>().linearVelocityY = 0;
 
                     
-                    slots[gameObject.GetComponent<gambachildscript>().Decider.GetComponent<gambachildscript>().index + 5].transform.position = new Vector3(slots[gameObject.GetComponent<gambachildscript>().Decider.GetComponent<gambachildscript>().index + 5].transform.position.x, 2, 0);
-                    slots[gameObject.GetComponent<gambachildscript>().Decider.GetComponent<gambachildscript>().index + 10].transform.position = new Vector3(slots[gameObject.GetComponent<gambachildscript>().Decider.GetComponent<gambachildscript>().index + 10].transform.position.x, 0, 0);
+                    slots[gameObject.GetComponent<gambachildscript>().Decider.GetComponent<gambachildscript>().index + 5].transform.position = new Vector3(slots[gameObject.GetComponent<gambachildscript>().Decider.GetComponent<gambachildscript>().index + 5].transform.position.x, 0, 0);
+                    slots[gameObject.GetComponent<gambachildscript>().Decider.GetComponent<gambachildscript>().index + 10].transform.position = new Vector3(slots[gameObject.GetComponent<gambachildscript>().Decider.GetComponent<gambachildscript>().index + 10].transform.position.x, 2, 0);
                     slots[gameObject.GetComponent<gambachildscript>().Decider.GetComponent<gambachildscript>().index].transform.position = new Vector3(slots[gameObject.GetComponent<gambachildscript>().Decider.GetComponent<gambachildscript>().index].transform.position.x, -2, 0);
 
                     gameObject.GetComponent<gambachildscript>().rolling = false;
-                        yield return new WaitForEndOfFrame();
+                    
+                    yield return new WaitForEndOfFrame();
+                        
                         continue;
                 }
                 
@@ -121,60 +155,18 @@ public class Rollingscript : MonoBehaviour
 
             
                 
-                
-                /*
-                while (gameObject.transform.position.y > -4 && gameObject.GetComponent<gambachildscript>().rolling&& i < 4)
-                {
-
-
-
-                    Debug.Log("something");
-                    yield return null;
-                        
-                    
-
-
-                    if (gameObject.transform.position.y <= -4)
-                    {
-                        gameObject.GetComponent<gambachildscript>().rolls += 1;
-
-                        SpriteRenderer spriterenderer = gameObject.GetComponent<SpriteRenderer>();
-                        int rand = Random.Range(0, sprites.Count);
-                        if (gameObject.GetComponent<gambachildscript>().rolling)
-                        {
-                            spriterenderer.sprite = sprites[rand];
-                        }
-                        gameObject.transform.position = new Vector3(gameObject.transform.position.x, 2, 0);
-                    }
-                }
-
-                
-
-
-
-                
-
-
-                
-
-                
-                
-               
-
-
-                if (i > 80)
-                {
-
-                    stoprolling(i);
-
-                }
-
-                 */
-            
-            
+              
 
                
         }
+        endstep = 0;
+        foreach (GameObject g in slots)
+        {
+
+            g.GetComponent<gambachildscript>().rolls = 0;
+           
+        }
+        Debug.Log("fin");
         yield return new();
     }
     // Update is called once per frame
