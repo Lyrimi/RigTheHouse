@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.IO.Ports;
+using System;
 
 public class ItemManager : MonoBehaviour
 {
@@ -31,11 +32,20 @@ public class ItemManager : MonoBehaviour
 
     public void Init()
     {
+        if (index < 0 || index > _items.Count)
+        {
+            return;
+        }
         _items[index].IsSelected = true;
     }
 
     void OnEnable()
     {
+        if (index < 0 || index >= _items.Count)
+        {
+            return;
+        }
+
         if (_items[index].gameObject.activeInHierarchy)
         {
             _items[index].IsSelected = true;
@@ -44,6 +54,11 @@ public class ItemManager : MonoBehaviour
     }
     void OnDisable()
     {
+        if (index < 0 || index >= _items.Count)
+        {
+            return;
+        }
+        print($"{index}, {_items.Count}, {index < 0}, {index > _items.Count}");
         if (_items[index].gameObject.activeInHierarchy)
         {
             _items[index].IsSelected = false;
@@ -54,7 +69,7 @@ public class ItemManager : MonoBehaviour
 
     void Move(InputAction.CallbackContext callbackContext)
     {
-        if (gameObject.activeInHierarchy == false)
+        if (gameObject.activeInHierarchy == false || !gameObject.activeSelf)
         {
             return;
         }
@@ -64,6 +79,7 @@ public class ItemManager : MonoBehaviour
 
     public void Move(int value)
     {
+        print(index);
         _items[index].IsSelected = false;
         index = value switch
         {

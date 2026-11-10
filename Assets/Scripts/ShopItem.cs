@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(ItemData))]
@@ -9,12 +10,27 @@ public class ShopItem : MonoBehaviour
     [SerializeField] private TMP_Text _priceVisualiser;
 
     [SerializeField] private int _price;
+    [SerializeField] Color _baseColor;
+    [SerializeField] Color _poorColor;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _itemData = GetComponent<ItemData>();
-        _itemData.Activate += Purchase;
         _priceVisualiser.text = $"{_price}";
+        PlayerWallet.Instance.OnCashChange += UpdateText;
+        UpdateText();
+    }
+
+    void UpdateText()
+    {
+        if (PlayerWallet.Instance.HasEnoughCash(_price))
+        {
+            _priceVisualiser.color = _baseColor;
+        }
+        else
+        {
+            _priceVisualiser.color = _poorColor;
+        }
     }
 
     // Update is called once per frame
@@ -23,9 +39,21 @@ public class ShopItem : MonoBehaviour
 
     }
 
+    public bool AtemptPurchase()
+    {
+        if (PlayerWallet.Instance.HasEnoughCash(_price))
+        {
+            Purchase();
+            return true;
+        }
+        return false;
+    }
+
     void Purchase()
     {
-        YeetTheText(_priceVisualiser.transform.parent.gameObject, 3f);
+        PlayerWallet.Instance.Cash -= _price;
+        print("Yeeted The text");
+        StartCoroutine(YeetTheText(_priceVisualiser.transform.parent.gameObject, 3f));
     }
 
     IEnumerator YeetTheText(GameObject obj, float despawnTime)
@@ -44,8 +72,6 @@ public class ShopItem : MonoBehaviour
 
             obj.SetActive(false);
         }
-
-
     }
 
 

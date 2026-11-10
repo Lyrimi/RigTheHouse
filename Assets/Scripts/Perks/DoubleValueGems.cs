@@ -1,6 +1,6 @@
 using UnityEngine;
 using static GamblingManager;
-public class DoubleValueGems : Perk
+public class DoubleValueGems : PerkBase
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,9 +14,9 @@ public class DoubleValueGems : Perk
 
     }
 
-    public override void ApplyEffect()
+    public override void ApplyStatChangeEffect()
     {
-        base.ApplyEffect();
+        base.ApplyStatChangeEffect();
 
         for (int i = 0; i < Instance.gameSymbols.Count; i++)
         {

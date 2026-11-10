@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 [RequireComponent(typeof(ItemData))]
 [RequireComponent(typeof(ItemShake))]
+[RequireComponent(typeof(ShopItem))]
 public class CardPackSelect : MonoBehaviour
 {
     [SerializeField] private float _moveTime;
@@ -19,6 +21,7 @@ public class CardPackSelect : MonoBehaviour
     [NonSerialized] public ItemManager ShopItemManager;
     private ItemData _itemData;
     private ItemShake _itemShake;
+    private ShopItem _shopItem;
     private Material _disolve;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,6 +29,7 @@ public class CardPackSelect : MonoBehaviour
         _itemData = GetComponent<ItemData>();
         _itemShake = GetComponent<ItemShake>();
         _disolve = GetComponent<SpriteRenderer>().material;
+        _shopItem = GetComponent<ShopItem>();
         _itemData.Activate += OnActivate;
     }
 
@@ -38,8 +42,11 @@ public class CardPackSelect : MonoBehaviour
     void OnActivate()
     {
         print("CardDidStuff");
-        ShopItemManager._items.Remove(_itemData);
-        StartCoroutine(Move());
+        if (_shopItem.AtemptPurchase())
+        {
+            ShopItemManager._items.Remove(_itemData);
+            StartCoroutine(Move());
+        }
     }
 
     IEnumerator Move()

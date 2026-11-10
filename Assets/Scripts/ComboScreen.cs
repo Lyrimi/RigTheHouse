@@ -151,6 +151,7 @@ public class ComboScreen : MonoBehaviour
     [SerializeField] private ItemManager _shopItemManager;
     void RestartShop()
     {
+        CameraManager.Instance.upMovPart.gameObject.SetActive(false);
         _shopItemManager.gameObject.SetActive(true);
         _shopItemManager.Move(-1);
     }

@@ -17,19 +17,59 @@
                     "priority": 0
                 },
                 {
-                    "name": "Test",
-                    "type": "Value",
-                    "id": "bf05d7c1-6c01-460c-a358-55f0bca8fb55",
-                    "expectedControlType": "Integer",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true,
-                    "priority": 0
-                },
-                {
                     "name": "Select",
                     "type": "Button",
                     "id": "522e3858-11b5-4d8e-af28-6afc956ae37e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "R",
+                    "type": "Button",
+                    "id": "10dbe516-b611-43e6-957c-8e854e0c7e11",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "B",
+                    "type": "Button",
+                    "id": "37b33259-08d6-4928-ad9c-3f3c7b513cff",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "G",
+                    "type": "Button",
+                    "id": "e25dfa23-195b-4563-8eb2-8462be16e8d9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "Y",
+                    "type": "Button",
+                    "id": "d779eb1c-26cf-44af-8939-77bcd7d98558",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "BTB",
+                    "type": "Button",
+                    "id": "0c77a8cc-9649-4468-9d99-f4b99a8d1cd8",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -94,28 +134,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Custom",
-                    "id": "062493e9-e6e5-4159-97bb-7ae6e4cb8be8",
-                    "path": "Custom(NumParameter=1)",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Test",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "firstPart",
-                    "id": "374eeccb-74bc-4914-84d0-18b246aa6444",
-                    "path": "<Keyboard>/k",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Test",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "a7a7e332-09d2-4c88-a439-01755f66add8",
                     "path": "<Keyboard>/enter",
@@ -123,6 +141,61 @@
                     "processors": "",
                     "groups": "",
                     "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dfb05718-19ce-40ff-b714-d27ac2cea51e",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "R",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e8c1bd65-f1c5-4497-8131-899b85ff6ad0",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "B",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "261cddeb-44b7-4bb8-91b0-c68f578beb39",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "G",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c127974-0943-465f-82a8-2c3dc92275b9",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Y",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e22291e9-8217-4e64-aff5-ad5ba16eff92",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BTB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

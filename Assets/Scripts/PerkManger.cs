@@ -3,20 +3,28 @@ using System.Collections.Generic;
 using NUnit.Framework.Internal;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PerkManger : MonoBehaviour
 {
     public static PerkManger Instance;
 
-    [SerializeField] public Dictionary<Perk, int[]> PerkTable;
+    [SerializeField] public Dictionary<PerkBase, int[]> PerkTable;
     [SerializeField] private int _maxCodeLength;
     [SerializeField] private ComboButtonIndicator comboButtonIndicator;
 
-    public List<Perk> ActivePerks = new();
+    InputAction R;
+    InputAction B;
+    InputAction G;
+    InputAction Y;
+
+    public List<PerkBase> ActivePerks = new();
 
     public bool IsActive;
 
     public Action<bool> OnCompletion;
+
+    public Action OnScoreComplete;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,6 +32,35 @@ public class PerkManger : MonoBehaviour
     {
         Instance = this;
         comboButtonIndicator.MaxCodeLen = _maxCodeLength;
+        R = InputSystem.actions.FindAction("R");
+        G = InputSystem.actions.FindAction("G");
+        B = InputSystem.actions.FindAction("B");
+        Y = InputSystem.actions.FindAction("Y");
+
+        R.performed += RA;
+        G.performed += GA;
+        B.performed += BA;
+        Y.performed += YA;
+    }
+
+    void RA(InputAction.CallbackContext callbackContext)
+    {
+        AddInput(0);
+    }
+
+    void GA(InputAction.CallbackContext callbackContext)
+    {
+        AddInput(1);
+    }
+
+    void BA(InputAction.CallbackContext callbackContext)
+    {
+        AddInput(2);
+    }
+
+    void YA(InputAction.CallbackContext callbackContext)
+    {
+        AddInput(3);
     }
 
     // Update is called once per frame
@@ -90,12 +127,26 @@ public class PerkManger : MonoBehaviour
         }
     }
 
-    void CodeEntered(Perk perk)
+    void CodeEntered(PerkBase perk)
     {
         print(perk.gameObject.name);
-        ActivePerks.Add(perk);
+
         RestartInput();
         OnCompletion?.Invoke(true);
+        AddPerk(perk);
+    }
+
+    void AddPerk(PerkBase perk)
+    {
+
+        if (perk is PersistentPerk)
+        {
+            Type perkType = perk.GetType();
+            PersistentPerk addedperk = gameObject.AddComponent(perkType) as PersistentPerk;
+            ActivePerks.Add(addedperk);
+            return;
+        }
+        ActivePerks.Add(perk);
     }
 
     void Failed()

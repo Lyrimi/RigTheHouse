@@ -15,6 +15,8 @@ public class GamblingManager : MonoBehaviour
 
     public bool _debugButton;
     public bool _debugButton2;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,7 +41,7 @@ public class GamblingManager : MonoBehaviour
 
     public void Gamble()
     {
-        int[] symbols = new int[5];
+        Symbol[] symbols = new Symbol[5];
 
         for (int i = 0; i < symbols.Length; i++)
         {
@@ -50,7 +52,7 @@ public class GamblingManager : MonoBehaviour
 
         foreach (var item in symbols)
         {
-            combined += $"{item} | ";
+            combined += $"{item.SymbolIndex} | ";
         }
 
         Debug.Log(combined);
@@ -61,11 +63,11 @@ public class GamblingManager : MonoBehaviour
         gameSymbols = _baseSymbols.ToList();
         foreach (var item in PerkManger.Instance.ActivePerks)
         {
-            item.ApplyEffect();
+            item.ApplyStatChangeEffect();
         }
     }
 
-    public int GetWeightedRandomSymbol()
+    public Symbol GetWeightedRandomSymbol()
     {
         float totalWeight = 0;
 
@@ -82,11 +84,70 @@ public class GamblingManager : MonoBehaviour
 
             if (random < 0)
             {
-                return item.SymbolIndex;
+                return item;
             }
 
         }
-        return -1;
+        throw new Exception("No symbols found");
+    }
+    void PreHandleSymbols(Symbol[] symbols)
+    {
+        foreach (PerkBase item in PerkManger.Instance.ActivePerks)
+        {
+            if (item is PreEvalPerk)
+            {
+                ((PreEvalPerk)item).ApplyPreCaclEffect(ref symbols);
+            }
+        }
+        CaculateScore(symbols);
+    }
+    void CaculateScore(Symbol[] symbols)
+    {
+        int longestStreak = 0;
+        Symbol lSSymbol;
+        float LStreakValue = 0;
+        float CStreakValue = 0;
+        int lastSymbol = -1;
+        int currentStreak = 0;
+
+        for (int i = 0; i < symbols.Length; i++)
+        {
+            var item = symbols[i];
+            if (item.SymbolIndex != lastSymbol)
+            {
+                lastSymbol = item.SymbolIndex;
+                currentStreak = 0;
+                CStreakValue = 0;
+            }
+            currentStreak++;
+            CStreakValue += item.Value;
+
+            if (currentStreak > longestStreak)
+            {
+                longestStreak = currentStreak;
+                lSSymbol = item;
+                LStreakValue = CStreakValue;
+            }
+        }
+
+        float paternMult = longestStreak switch
+        {
+            5 => 27,
+            4 => 9,
+            3 => 3,
+            _ => 0,
+        };
+
+        float score = LStreakValue * paternMult;
+        ScorePostProcesing(score);
+    }
+
+    void ScorePostProcesing(float score)
+    {
+        foreach (var item in PerkManger.Instance.ActivePerks)
+        {
+            item.ApplyAfterScoreEffect(ref score);
+        }
     }
 }
 

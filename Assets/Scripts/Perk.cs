@@ -1,7 +1,11 @@
 using UnityEngine;
 
-public class Perk : MonoBehaviour
+public class PerkBase : MonoBehaviour
 {
+
+    //Perk
+    //PreEvalPerk
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,7 +18,12 @@ public class Perk : MonoBehaviour
 
     }
 
-    public virtual void ApplyEffect()
+    public virtual void ApplyStatChangeEffect()
+    {
+
+    }
+
+    public virtual void ApplyAfterScoreEffect(ref float score)
     {
 
     }
