@@ -5,31 +5,28 @@ public class Arrayscript : MonoBehaviour
 {
     [SerializeField]
     EmblemMovementScript[] EmblemArray;
-    
+
 
     public bool start;
 
     [SerializeField]
     int[] Array;
 
-    
+
     void Start()
     {
-        
+
     }
     private void Update()
     {
         if (start)
         {
-            
-            foreach (EmblemMovementScript emblem in EmblemArray) 
-            {
-                emblem.Restart();
-            }
+
+
             SlotSpriteManager.Instance.SetEndSprite(Array);
             start = false;
         }
-        
+
     }
 
 }

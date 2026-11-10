@@ -1,11 +1,12 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EmblemMovementScript : MonoBehaviour
 {
     [SerializeField]
     bool isMiddle;
-    
+
     static float speed = 13;
 
     [SerializeField]
@@ -20,20 +21,22 @@ public class EmblemMovementScript : MonoBehaviour
     ParticleSystem Particle;
 
     public Sprite endsprite;
-    
+
     SpriteRenderer spriteRenderer;
 
     float restartThreshold = -4;
-    float restartPosY= 2;
-   
+    float restartPosY = 2;
+
     float stopY;
-    
+
     int rolls = 0;
     [SerializeField]
     int maxrolls = 5;
 
+    [SerializeField] private bool shouldCallBack;
+    private bool hasCallBack = true;
 
-    RollState state = RollState.Rolling;
+    RollState state = RollState.Done;
 
 
     void Start()
@@ -49,11 +52,17 @@ public class EmblemMovementScript : MonoBehaviour
         {
             case RollState.Rolling:
                 Move();
+                hasCallBack = false;
                 break;
             case RollState.Done:
+                if (shouldCallBack && (hasCallBack == false))
+                {
+                    hasCallBack = true;
+                    SlotSpriteManager.Instance.CallBack?.Invoke();
+                }
                 break;
         }
-        
+
     }
 
     private void Move()
@@ -63,12 +72,12 @@ public class EmblemMovementScript : MonoBehaviour
             Vector3 newPosition = transform.position;
             newPosition.y = stopY;
             transform.position = newPosition;
-            speed += Random.Range(speedMinVar,speedMaxVar);
+            speed += Random.Range(speedMinVar, speedMaxVar);
             if (isMiddle)
             {
                 Vector3 particlePos = Particle.transform.position;
-                particlePos.y = newPosition.y -VarScript.instance.particleYOffSet;
-                Debug.Log($"{VarScript.instance.particleYOffSet}");
+                particlePos.y = newPosition.y - VarScript.instance.particleYOffSet;
+                //Debug.Log($"{VarScript.instance.particleYOffSet}");
                 particlePos.x = newPosition.x;
                 Particle.transform.position = particlePos;
                 Particle.Play();
@@ -77,7 +86,7 @@ public class EmblemMovementScript : MonoBehaviour
             return;
         }
         transform.position += Vector3.down * speed * Time.deltaTime;
-        if(transform.position.y <= restartThreshold)
+        if (transform.position.y <= restartThreshold)
         {
             float y = transform.position.y - restartThreshold;
             Vector3 newPosition = transform.position;
@@ -85,28 +94,28 @@ public class EmblemMovementScript : MonoBehaviour
             transform.position = newPosition;
             NewRandomSprite();
             rolls++;
-            if(rolls >= maxrolls && isMiddle)
+            if (rolls >= maxrolls && isMiddle)
             {
                 SetEndSprite();
             }
         }
-        
+
     }
 
     private void NewRandomSprite()
     {
         int rand = Random.Range(0, SlotSpriteManager.Instance.Sprites.Count);
         spriteRenderer.sprite = SlotSpriteManager.Instance.Sprites[rand];
-        
+
     }
-     enum RollState { Rolling, Done };
+    enum RollState { Rolling, Done };
 
     public void SetEndSprite()
     {
 
         spriteRenderer.sprite = endsprite;
-        
-     
+
+
     }
     public void Restart()
     {

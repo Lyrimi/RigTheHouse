@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class PlayerWallet : MonoBehaviour
 {
-    [SerializeField] private int _startingCash;
-    private int cash;
+    [SerializeField] private float _startingCash;
+    private float cash;
 
     public Action OnCashChange;
 
-    public int Cash
+    public float Cash
     {
         get
         {
@@ -37,7 +37,7 @@ public class PlayerWallet : MonoBehaviour
 
     }
 
-    public bool HasEnoughCash(int cost)
+    public bool HasEnoughCash(float cost)
     {
         return cost < Cash;
     }

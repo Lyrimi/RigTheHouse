@@ -20,6 +20,11 @@ public class GamblingManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            Destroy(this);
+        }
         Instance = this;
         RecaculateSymbolList();
     }
@@ -56,6 +61,7 @@ public class GamblingManager : MonoBehaviour
         }
 
         Debug.Log(combined);
+        PreHandleSymbols(symbols);
     }
 
     public void RecaculateSymbolList()
@@ -99,14 +105,27 @@ public class GamblingManager : MonoBehaviour
                 ((PreEvalPerk)item).ApplyPreCaclEffect(ref symbols);
             }
         }
+        int[] spriteIndexs = new int[symbols.Length];
+
+        for (int i = 0; i < spriteIndexs.Length; i++)
+        {
+            spriteIndexs[i] = symbols[i].SymbolIndex;
+        }
+        SlotSpriteManager.Instance.SetEndSprite(spriteIndexs, FinishedGambaAnim);
         CaculateScore(symbols);
     }
+    List<(ScoreType, float)> ScoreChanges = new();
+
     void CaculateScore(Symbol[] symbols)
     {
         int longestStreak = 0;
         Symbol lSSymbol;
         float LStreakValue = 0;
         float CStreakValue = 0;
+
+        ScoreChanges = new();
+        List<(ScoreType, float)> cScoreAddtions = new();
+
         int lastSymbol = -1;
         int currentStreak = 0;
 
@@ -118,15 +137,18 @@ public class GamblingManager : MonoBehaviour
                 lastSymbol = item.SymbolIndex;
                 currentStreak = 0;
                 CStreakValue = 0;
+                cScoreAddtions = new();
             }
             currentStreak++;
             CStreakValue += item.Value;
+            cScoreAddtions.Add((ScoreType.Addtion, item.Value));
 
             if (currentStreak > longestStreak)
             {
                 longestStreak = currentStreak;
                 lSSymbol = item;
                 LStreakValue = CStreakValue;
+                ScoreChanges = cScoreAddtions;
             }
         }
 
@@ -138,7 +160,12 @@ public class GamblingManager : MonoBehaviour
             _ => 0,
         };
 
+
+
+
         float score = LStreakValue * paternMult;
+        ScoreChanges.Add((ScoreType.Mult, paternMult));
+
         ScorePostProcesing(score);
     }
 
@@ -146,8 +173,22 @@ public class GamblingManager : MonoBehaviour
     {
         foreach (var item in PerkManger.Instance.ActivePerks)
         {
-            item.ApplyAfterScoreEffect(ref score);
+            item.ApplyAfterScoreEffect(ref score, ref ScoreChanges);
         }
+        foreach (var item in ScoreChanges)
+        {
+            print($"{item.Item1} | {item.Item2}");
+        }
+        print(score);
+
+
+
+    }
+
+    void FinishedGambaAnim()
+    {
+        ScoreVisualiser.Instance.ApplyScoreChanges(ScoreChanges);
+        print("Finished Gambling runing Score anims");
     }
 }
 
@@ -159,4 +200,11 @@ public struct Symbol
     public float Weight;
 
     public float Value;
+}
+
+[Serializable]
+public enum ScoreType
+{
+    Addtion,
+    Mult,
 }

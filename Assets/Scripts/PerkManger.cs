@@ -30,6 +30,11 @@ public class PerkManger : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            Destroy(this);
+        }
         Instance = this;
         comboButtonIndicator.MaxCodeLen = _maxCodeLength;
         R = InputSystem.actions.FindAction("R");

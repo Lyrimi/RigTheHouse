@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PerkBase : MonoBehaviour
@@ -23,7 +24,7 @@ public class PerkBase : MonoBehaviour
 
     }
 
-    public virtual void ApplyAfterScoreEffect(ref float score)
+    public virtual void ApplyAfterScoreEffect(ref float score, ref List<(ScoreType, float)> scoreChanges)
     {
 
     }
