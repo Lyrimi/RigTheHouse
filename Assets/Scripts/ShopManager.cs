@@ -1,13 +1,21 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using Random = UnityEngine.Random;
+[Serializable]
+public class WeightedPrefab
+{
+    public GameObject Prefab;
+    public float Weight;
+}
 public class ShopManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _prefabs;
+    [SerializeField] private WeightedPrefab[] _prefabs;
     [SerializeField] private int _countToSpawn;
     [SerializeField] private float _distance;
     [SerializeField] private Transform _startPos;
     [SerializeField] private ItemManager _itemManager;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,10 +37,34 @@ public class ShopManager : MonoBehaviour
             float cx = startx + _distance * i;
             Vector3 spawnPos = _startPos.position;
             spawnPos.x = cx;
-            ItemData item = Instantiate(_prefabs[0], spawnPos, Quaternion.identity).GetComponent<ItemData>();
+            ItemData item = Instantiate(GetRandomWeightedPrefab(_prefabs), spawnPos, Quaternion.identity).GetComponent<ItemData>();
             _itemManager._items.Insert(_itemManager._items.Count - 1, item);
 
 
         }
+    }
+    GameObject GetRandomWeightedPrefab(WeightedPrefab[] weightedPrefabs)
+    {
+        float totalWeight = 0;
+
+        foreach (var item in weightedPrefabs)
+        {
+            totalWeight += item.Weight;
+        }
+
+        float random = Random.Range(0, totalWeight);
+
+        foreach (var item in weightedPrefabs)
+        {
+            random -= item.Weight;
+
+            if (random < 0)
+            {
+                return item.Prefab;
+            }
+
+        }
+        Debug.LogWarning("Couldn't Find any perk");
+        return null;
     }
 }

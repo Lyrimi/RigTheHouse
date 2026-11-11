@@ -168,11 +168,11 @@ public class ScoreVisualiser : MonoBehaviour
     IEnumerator AddScoreToWallet()
     {
         yield return null;
-        StartCoroutine(Bounce(transform, 1, 0, 2, true));
-        yield return Move(transform, transform.position, playerWalletVisual.position, 2f);
+        StartCoroutine(Bounce(transform, 1, 0, 0.5f, true));
+        yield return Move(transform, transform.position, playerWalletVisual.position, 0.5f);
         PlayerWallet.Instance.Cash += score;
         transform.position = startPos;
-
-
+        GamblingManager.Instance.isSpining = false;
+        GamblingManager.Instance.CheckIfFinsihed();
     }
 }

@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.IO.Ports;
-using System;
 
 public class ItemManager : MonoBehaviour
 {
@@ -68,12 +66,13 @@ public class ItemManager : MonoBehaviour
 
     void Move(InputAction.CallbackContext callbackContext)
     {
+        if (gameObject == null) { return; }
         if (gameObject.activeInHierarchy == false || !gameObject.activeSelf)
         {
             return;
         }
         Vector2 value = callbackContext.ReadValue<Vector2>();
-        Move((int)value.x);
+        Move((int)value.x); //
     }
 
     public void Move(int value)

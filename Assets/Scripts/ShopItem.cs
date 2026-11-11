@@ -17,8 +17,9 @@ public class ShopItem : MonoBehaviour
     [SerializeField] private int _price;
     [SerializeField] Color _baseColor;
     [SerializeField] Color _poorColor;
-    [SerializeField] private SpawnAbleItem[] _cards;
-    public SpawnAbleItem[] Cards => _cards;
+
+    [SerializeField] private CardPool universalCardPool;
+    [SerializeField] private CardPool rairtyCardPool;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -83,11 +84,16 @@ public class ShopItem : MonoBehaviour
     public List<PerkBase> GetNumRandomWeightedPerks(int num)
     {
         List<PerkBase> selectedPerks = new();
+        List<SpawnAbleItem> cSpawnAbles = universalCardPool.SpawnAbleItems.ToList();
 
-        List<SpawnAbleItem> cSpawnAbles = _cards.ToList();
+        SpawnAbleItem RaretyItem = GetRandomWeightedPerk(rairtyCardPool.SpawnAbleItems.ToList());
+        selectedPerks.Add(RaretyItem.Perk);
+        cSpawnAbles.Remove(RaretyItem);
+        num--;
 
         for (int i = 0; i < num; i++)
         {
+            print($"{cSpawnAbles.Count}");
             SpawnAbleItem item = GetRandomWeightedPerk(cSpawnAbles);
             if (item == null)
             {
@@ -123,13 +129,8 @@ public class ShopItem : MonoBehaviour
             }
 
         }
+        Debug.LogWarning("Couldn't Find any perk");
         return null;
     }
 
-}
-[Serializable]
-public class SpawnAbleItem
-{
-    public PerkBase Perk;
-    public float Weight;
 }

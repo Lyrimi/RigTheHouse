@@ -54,6 +54,17 @@ MonoBehaviour:
   - SymbolIndex: 2
     Weight: 1
     Value: 4
+  - SymbolIndex: 3
+    Weight: 1
+    Value: 4
+  - SymbolIndex: 4
+    Weight: 1
+    Value: 4
+  - SymbolIndex: 5
+    Weight: 1
+    Value: 4
   gameSymbols: []
   _debugButton: 0
   _debugButton2: 0
+  isSpining: 0
+  FinishedText: {fileID: 0}

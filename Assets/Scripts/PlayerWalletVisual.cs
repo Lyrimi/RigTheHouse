@@ -9,6 +9,7 @@ public class PlayerWalletVisual : MonoBehaviour
     {
         _text = GetComponent<TMP_Text>();
         PlayerWallet.Instance.OnCashChange += UpdateText;
+        UpdateText();
     }
 
     // Update is called once per frame

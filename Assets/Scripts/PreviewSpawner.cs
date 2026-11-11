@@ -11,39 +11,37 @@ public class PreviewSpawner : MonoBehaviour
 
     [SerializeField] private GameObject prefab;
     [SerializeField] private int ToSpawn;
+
+    public bool debugButton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SpawnItems();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (debugButton)
+        {
+            SpawnItems();
+            debugButton = false;
+        }
     }
 
     void SpawnItems()
     {
-        _prefabs = PerkManger.Instance.perkObjects;
+        foreach (var item in PerkManger.Instance.perkObjects)
+        {
+            _prefabs.Add(item.gameObject);
+        }
 
 
         float countToSpawn = _prefabs.Count;
 
-        countToSpawn = ToSpawn;
-        float spawnDif = _distance / (countToSpawn - 1);
-        float startx = _startPos.position.x - (spawnDif / 2 * (countToSpawn - 1));
+        float startx = 0;
         for (int i = 0; i < countToSpawn; i++)
         {
-            float cx = startx + spawnDif * i;
-            Vector3 spawnPos = _startPos.position;
-            spawnPos.x = cx;
-            GameObject obj = Instantiate(prefab, spawnPos, Quaternion.identity);
-            ItemData item = obj.GetComponent<ItemData>();
-            SpriteRenderer rend = obj.GetComponent<SpriteRenderer>();
-            //rend.sprite = _prefabs[i].GetComponent<SpriteRenderer>().sprite;
-            _itemManager._items.Insert(_itemManager._items.Count - 1, item);
-
 
         }
     }

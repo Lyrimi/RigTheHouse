@@ -7,6 +7,22 @@ public class PlayerWallet : MonoBehaviour
     private float cash;
 
     public Action OnCashChange;
+    public Action OnSpinsChange;
+
+    [SerializeField] int remaningSpins;
+
+    public int RemaningSpins
+    {
+        get
+        {
+            return remaningSpins;
+        }
+        set
+        {
+            remaningSpins = value;
+            OnSpinsChange?.Invoke();
+        }
+    }
 
     public float Cash
     {
@@ -28,6 +44,7 @@ public class PlayerWallet : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(this);
+            return;
         }
         Instance = this;
     }

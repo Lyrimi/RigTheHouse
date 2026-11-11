@@ -9,6 +9,8 @@ public class PerkManger : MonoBehaviour
 {
     public static PerkManger Instance;
 
+    [SerializeField] private StatStorage statStorage;
+
     [SerializeField] public Dictionary<PerkBase, int[]> PerkTable;
     [SerializeField] private int _maxCodeLength;
 
@@ -16,10 +18,11 @@ public class PerkManger : MonoBehaviour
     InputAction B;
     InputAction G;
     InputAction Y;
+    InputAction LR;
 
     public List<PerkBase> ActivePerks = new();
 
-    public List<GameObject> perkObjects = new();
+    public List<PerkBase> perkObjects = new();
 
     public bool IsActive;
 
@@ -27,48 +30,69 @@ public class PerkManger : MonoBehaviour
 
     public Action OnScoreComplete;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             Destroy(this);
+            return;
         }
         Instance = this;
+        statStorage.Init();
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+
+
         ComboButtonIndicator.Instance.MaxCodeLen = _maxCodeLength;
         R = InputSystem.actions.FindAction("R");
         G = InputSystem.actions.FindAction("G");
         B = InputSystem.actions.FindAction("B");
         Y = InputSystem.actions.FindAction("Y");
+        LR = InputSystem.actions.FindAction("Move");
 
         R.performed += RA;
         G.performed += GA;
         B.performed += BA;
         Y.performed += YA;
+        LR.performed += LRA;
 
         DontDestroyOnLoad(gameObject);
     }
 
     void RA(InputAction.CallbackContext callbackContext)
     {
-        AddInput(3);
+        AddInput(4);
     }
 
     void GA(InputAction.CallbackContext callbackContext)
     {
-        AddInput(0);
+        AddInput(1);
     }
 
     void BA(InputAction.CallbackContext callbackContext)
     {
-        AddInput(2);
+        AddInput(3);
     }
 
     void YA(InputAction.CallbackContext callbackContext)
     {
-        AddInput(1);
+        AddInput(2);
+    }
+
+    void LRA(InputAction.CallbackContext callbackContext)
+    {
+        Vector2 value = callbackContext.ReadValue<Vector2>();
+        int num = value.x switch
+        {
+            1 => 5,
+            -1 => 0,
+            _ => -1,
+        };
+        AddInput(num);
     }
 
     // Update is called once per frame
@@ -162,7 +186,7 @@ public class PerkManger : MonoBehaviour
 
     void AddPerk(PerkBase perk)
     {
-        perkObjects.Add(perk.gameObject);
+        perkObjects.Add(perk);
         OnCompletion?.Invoke(true, perk.gameObject);
         if (perk is PersistentPerk)
         {

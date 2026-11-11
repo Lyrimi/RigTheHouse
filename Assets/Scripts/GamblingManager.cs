@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 public class GamblingManager : MonoBehaviour
@@ -16,10 +17,13 @@ public class GamblingManager : MonoBehaviour
     public bool _debugButton;
     public bool _debugButton2;
 
+    InputAction selectAction;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        selectAction = InputSystem.actions.FindAction("Select");
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -27,6 +31,7 @@ public class GamblingManager : MonoBehaviour
         }
         Instance = this;
         RecaculateSymbolList();
+        selectAction.performed += Input;
     }
 
     // Update is called once per frame
@@ -43,9 +48,27 @@ public class GamblingManager : MonoBehaviour
             RecaculateSymbolList();
         }
     }
+
+    void Input(InputAction.CallbackContext callbackContext)
+    {
+        Gamble();
+    }
     Symbol[] gambaSymbols;
+
+    public bool isSpining;
     public void Gamble()
     {
+        if (isSpining)
+        {
+            return;
+        }
+        if (PlayerWallet.Instance.RemaningSpins <= 0)
+        {
+            return;
+        }
+        PlayerWallet.Instance.RemaningSpins -= 1;
+        isSpining = true;
+
         gambaSymbols = new Symbol[5];
 
         for (int i = 0; i < gambaSymbols.Length; i++)
@@ -195,6 +218,15 @@ public class GamblingManager : MonoBehaviour
     {
         ScoreVisualiser.Instance.ApplyScoreChanges(ScoreChanges);
         print("Finished Gambling runing Score anims");
+    }
+
+    [SerializeField] private GameObject FinishedText;
+    public void CheckIfFinsihed()
+    {
+        if (PlayerWallet.Instance.RemaningSpins <= 0)
+        {
+            FinishedText.SetActive(true);
+        }
     }
 }
 
