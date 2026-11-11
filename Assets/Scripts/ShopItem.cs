@@ -88,7 +88,19 @@ public class ShopItem : MonoBehaviour
 
         SpawnAbleItem RaretyItem = GetRandomWeightedPerk(rairtyCardPool.SpawnAbleItems.ToList());
         selectedPerks.Add(RaretyItem.Perk);
-        cSpawnAbles.Remove(RaretyItem);
+
+        SpawnAbleItem ToRemove = null;
+        foreach (var item in cSpawnAbles)
+        {
+            if (item.Perk == RaretyItem.Perk)
+            {
+                ToRemove = item;
+            }
+        }
+        if (!cSpawnAbles.Remove(ToRemove))
+        {
+            Debug.LogWarning("Didn't remove obj from universalPool");
+        }
         num--;
 
         for (int i = 0; i < num; i++)

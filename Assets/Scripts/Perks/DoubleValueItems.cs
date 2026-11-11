@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static GamblingManager;
-public class DoubleValueGems : PerkBase
+public class DoubleValueItems : PerkBase
 {
+    [SerializeField] private int[] symbolsToAffect;
+    [SerializeField] private float mult = 2;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,11 +22,14 @@ public class DoubleValueGems : PerkBase
 
         for (int i = 0; i < Instance.gameSymbols.Count; i++)
         {
-            if (Instance.gameSymbols[i].SymbolIndex < 3)
+            foreach (var item in symbolsToAffect)
             {
-                Symbol symbol = Instance.gameSymbols[i];
-                symbol.Value *= 2;
-                Instance.gameSymbols[i] = symbol;
+                if (Instance.gameSymbols[i].SymbolIndex == item)
+                {
+                    Symbol symbol = Instance.gameSymbols[i];
+                    symbol.Value *= mult;
+                    Instance.gameSymbols[i] = symbol;
+                }
             }
         }
     }

@@ -15,10 +15,8 @@ public class BigBaller : PersistentPerk
 
     }
     const int SMYBOLINDEX = 2;
-    public override void OnScoreComplete(Symbol[] gambaSymbols)
+    public override void OnScoreComplete(Symbol[] gambaSymbols, float score)
     {
-        base.OnScoreComplete(gambaSymbols);
-
         bool match = true;
         foreach (var item in gambaSymbols)
         {

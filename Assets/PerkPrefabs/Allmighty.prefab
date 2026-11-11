@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4667197786154285585}
   - component: {fileID: -7768947450395087377}
   m_Layer: 0
-  m_Name: Perk 2
+  m_Name: Allmighty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

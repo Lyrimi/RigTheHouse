@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4667197786154285585}
   - component: {fileID: -7768947450395087377}
   m_Layer: 0
-  m_Name: Perk
+  m_Name: DoubleIdolValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 2322625098595228647, guid: 406730cd2b4cc514cb05863f560fe2f0, type: 3}
+  m_Sprite: {fileID: -5726232047917237461, guid: 239831ceb82fe0a45900061cece260a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,3 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb85941340460947b839b3b7c28667c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoubleValueGems
+  MaxAmount: -1
+  PerkDescription: Doubles the value Idol symbols
+  symbolsToAffect: 0100000005000000i
+  mult: 2

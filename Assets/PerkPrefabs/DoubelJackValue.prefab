@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4667197786154285585}
   - component: {fileID: -7768947450395087377}
   m_Layer: 0
-  m_Name: Perk 4
+  m_Name: DoubelJackValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -8415755697556176441, guid: 50ed44745a6b9b94289890e8e85443e1, type: 3}
+  m_Sprite: {fileID: 5276321034504731354, guid: 404cdefee8eda3c479b3ae0ca238ba74, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,4 +106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoubleValueGems
   MaxAmount: -1
-  PerkDescription: 
+  PerkDescription: Doubles the value of jackpot symbol
+  symbolsToAffect: 02000000i
+  mult: 2

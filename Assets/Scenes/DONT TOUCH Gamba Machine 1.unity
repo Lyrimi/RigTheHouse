@@ -4781,26 +4781,6 @@ PrefabInstance:
       propertyPath: FinishedText
       value: 
       objectReference: {fileID: 1058189593}
-    - target: {fileID: 8820370483062477384, guid: 3dab8468eae18684697dcfbda3056555, type: 3}
-      propertyPath: _baseSymbols.Array.data[0].Weight
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820370483062477384, guid: 3dab8468eae18684697dcfbda3056555, type: 3}
-      propertyPath: _baseSymbols.Array.data[1].Weight
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820370483062477384, guid: 3dab8468eae18684697dcfbda3056555, type: 3}
-      propertyPath: _baseSymbols.Array.data[3].Weight
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820370483062477384, guid: 3dab8468eae18684697dcfbda3056555, type: 3}
-      propertyPath: _baseSymbols.Array.data[4].Weight
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820370483062477384, guid: 3dab8468eae18684697dcfbda3056555, type: 3}
-      propertyPath: _baseSymbols.Array.data[5].Weight
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

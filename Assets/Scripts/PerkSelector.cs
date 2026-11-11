@@ -12,6 +12,8 @@ public class PerkSelector : MonoBehaviour
     private ItemData _itemData;
     public ItemManager ItemManager;
 
+    public ComboScreen comboScreen;
+
 
 
     [SerializeField] private Sprite CodeImage;
@@ -88,9 +90,10 @@ public class PerkSelector : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        ComboScreen comboScreen = ComboScreen.Instance;
 
         comboScreen.CodeVisualiser.StartHightlight(perkSelectVisual.Perk);
+
+        PerkManger.Instance.PerkAtempt = perkSelectVisual.Perk; //
 
         comboScreen.LerpPos(comboScreen.RevelPos.position, 0.5f, DestroyThis);
 
@@ -98,7 +101,7 @@ public class PerkSelector : MonoBehaviour
 
     void DestroyThis()
     {
-        ComboScreen.Instance.WatingAnyInput = true;
+        comboScreen.WatingAnyInput = true;
         foreach (var item in cardObjs)
         {
             if (!item)

@@ -15,5 +15,3 @@ MonoBehaviour:
   SpawnAbleItems:
   - Perk: {fileID: -6635976458225520486, guid: b4dcd05d28215d24cbf0dcbd283b6ef3, type: 3}
     Weight: 1
-  - Perk: {fileID: -7768947450395087377, guid: 7af73a6f077b61c45b57fe039a599a3b, type: 3}
-    Weight: 1

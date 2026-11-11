@@ -32,6 +32,7 @@ public class BuyRounds : MonoBehaviour
     {
         if (PlayerWallet.Instance.HasEnoughCash((int)statStorage.BuyRoundsPrice))
         {
+            print("Bought");
             PlayerWallet.Instance.Cash -= (int)statStorage.BuyRoundsPrice;
             statStorage.BuyRoundsPrice *= 1.2f;
             UpdateText();

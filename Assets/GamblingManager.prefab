@@ -46,23 +46,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _baseSymbols:
   - SymbolIndex: 0
-    Weight: 0.5
+    Weight: 4
     Value: 2
+    Identifyer: Emerald
   - SymbolIndex: 1
-    Weight: 0.5
+    Weight: 4
     Value: 3
+    Identifyer: Golden Idol
   - SymbolIndex: 2
     Weight: 1
     Value: 4
+    Identifyer: Jackpot
   - SymbolIndex: 3
-    Weight: 1
+    Weight: 2
     Value: 4
+    Identifyer: Ruby
   - SymbolIndex: 4
-    Weight: 1
+    Weight: 2
     Value: 4
+    Identifyer: Saphire
   - SymbolIndex: 5
-    Weight: 1
+    Weight: 2
     Value: 4
+    Identifyer: Silver Idol
   gameSymbols: []
   _debugButton: 0
   _debugButton2: 0

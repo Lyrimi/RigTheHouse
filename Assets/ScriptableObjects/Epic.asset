@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Epic
   m_EditorClassIdentifier: Assembly-CSharp::CardPool
   SpawnAbleItems:
-  - Perk: {fileID: -7768947450395087377, guid: d4284fefd869c6d4da8f8af6ae56e339, type: 3}
+  - Perk: {fileID: 2971175447795459222, guid: d4284fefd869c6d4da8f8af6ae56e339, type: 3}
+    Weight: 1
+  - Perk: {fileID: -3293242739021063571, guid: a495bf6b843ee694db2c4fb78302dfe1, type: 3}
+    Weight: 1
+  - Perk: {fileID: 7925604488270898679, guid: 368c321530a01454eae9e1a18041e583, type: 3}
     Weight: 1

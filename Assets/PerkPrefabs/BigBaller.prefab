@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2436037596335733520}
   - component: {fileID: 4667197786154285585}
-  - component: {fileID: -7768947450395087377}
+  - component: {fileID: -6635976458225520486}
   m_Layer: 0
-  m_Name: Perk 3
+  m_Name: BigBaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -7945486095475922665, guid: 5ebb97acd3fbe3748823f4ca20e444a4, type: 3}
+  m_Sprite: {fileID: 1826170086577058484, guid: 7f715c52adc23f24b87853a7cf94f8bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,7 +93,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!114 &-7768947450395087377
+--- !u!114 &-6635976458225520486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,6 +102,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5170214633460886298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acb85941340460947b839b3b7c28667c, type: 3}
+  m_Script: {fileID: 11500000, guid: 12a27d857246bce4aa8fe72400cda466, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DoubleValueGems
+  m_EditorClassIdentifier: Assembly-CSharp::BigBaller
+  MaxAmount: -1
+  PerkDescription: 'BIG BALLER
+
+    DOES STUFF'

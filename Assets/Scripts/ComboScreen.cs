@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class ComboScreen : MonoBehaviour
 {
-    static public ComboScreen Instance;
     public Vector3 StartPostion;
 
     public Transform RevelPos;
@@ -24,10 +23,11 @@ public class ComboScreen : MonoBehaviour
     void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        Instance = this;
         StartPostion = transform.position;
         CodeVisualiser = GetComponent<CodeVisualiser>();
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -109,7 +109,7 @@ public class ComboScreen : MonoBehaviour
         CodeVisualiser.EndHightLight();
         PerkManger.Instance.IsActive = true;
         PerkManger.Instance.RestartInput();
-        PerkManger.Instance.OnCompletion += Finished;
+        PerkManger.Instance.OnCompletion = Finished;
     }
     Animator animator;
     public void Finished(bool Completed, GameObject perkObj)

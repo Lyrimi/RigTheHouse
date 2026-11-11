@@ -58,6 +58,7 @@ public class GamblingManager : MonoBehaviour
     public bool isSpining;
     public void Gamble()
     {
+        RecaculateSymbolList();
         if (isSpining)
         {
             return;
@@ -199,7 +200,7 @@ public class GamblingManager : MonoBehaviour
             item.ApplyAfterScoreEffect(ref score, ref ScoreChanges);
             if (item is PersistentPerk)
             {
-                ((PersistentPerk)item).OnScoreComplete(gambaSymbols);
+                ((PersistentPerk)item).OnScoreComplete(gambaSymbols, score);
             }
         }
         foreach (var item in ScoreChanges)
@@ -238,6 +239,8 @@ public struct Symbol
     public float Weight;
 
     public float Value;
+
+    public string Identifyer;
 }
 
 [Serializable]

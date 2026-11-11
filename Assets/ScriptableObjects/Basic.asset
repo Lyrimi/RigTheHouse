@@ -13,7 +13,15 @@ MonoBehaviour:
   m_Name: Basic
   m_EditorClassIdentifier: Assembly-CSharp::CardPool
   SpawnAbleItems:
+  - Perk: {fileID: -7768947450395087377, guid: a1eb5163380e9f140997faa7cfc36c73, type: 3}
+    Weight: 1
+  - Perk: {fileID: -3921469717517122500, guid: c06c5b4137078e247b985c2c3e7d3b8f, type: 3}
+    Weight: 1
   - Perk: {fileID: -7768947450395087377, guid: 0f2eb4c65c4955f4fb649f1436315cf4, type: 3}
     Weight: 1
-  - Perk: {fileID: -7768947450395087377, guid: c06c5b4137078e247b985c2c3e7d3b8f, type: 3}
+  - Perk: {fileID: -8750223691025400718, guid: d8060b860f1d8f54481029706080f8bc, type: 3}
+    Weight: 1
+  - Perk: {fileID: -7768947450395087377, guid: 9d64371180d408849b6e1506ee7e5183, type: 3}
+    Weight: 1
+  - Perk: {fileID: 265145704964494195, guid: 2d98a662341687e4b8c5d78cba0e08a4, type: 3}
     Weight: 1

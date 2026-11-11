@@ -9,6 +9,7 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private Transform _cardPackMove;
     [SerializeField] private ItemManager _carditemManager;
     [SerializeField] private Transform _carditemstartPos;
+    public ComboScreen comboScreen;
     private InputAction _moveAction;
     private InputAction _sellectAction;
 

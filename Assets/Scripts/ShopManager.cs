@@ -31,6 +31,14 @@ public class ShopManager : MonoBehaviour
 
     void SpawnItems()
     {
+        foreach (var item in PerkManger.Instance.ActivePerks)
+        {
+            if (item is ShopExpansion)
+            {
+                _countToSpawn++;
+            }
+        }
+
         float startx = _startPos.position.x - (_distance / 2 * (_countToSpawn - 1));
         for (int i = 0; i < _countToSpawn; i++)
         {

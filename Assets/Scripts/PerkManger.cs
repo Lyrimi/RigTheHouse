@@ -30,6 +30,8 @@ public class PerkManger : MonoBehaviour
 
     public Action OnScoreComplete;
 
+    public PerkBase PerkAtempt;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -45,8 +47,6 @@ public class PerkManger : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-
         ComboButtonIndicator.Instance.MaxCodeLen = _maxCodeLength;
         R = InputSystem.actions.FindAction("R");
         G = InputSystem.actions.FindAction("G");
@@ -152,17 +152,17 @@ public class PerkManger : MonoBehaviour
             Failed();
         }
 
-        foreach (var item in PerkTable)
+        var item = PerkTable[PerkAtempt];
         {
-            if (listLen != item.Value.Length)
+            if (listLen != item.Length)
             {
-                continue;
+                return;
             }
 
             bool match = true;
             for (int i = 0; i < listLen; i++)
             {
-                if (_curentCombo[i] != item.Value[i])
+                if (_curentCombo[i] != item[i])
                 {
                     match = false;
                 }
@@ -170,7 +170,7 @@ public class PerkManger : MonoBehaviour
 
             if (match)
             {
-                CodeEntered(item.Key);
+                CodeEntered(PerkAtempt);
             }
         }
     }

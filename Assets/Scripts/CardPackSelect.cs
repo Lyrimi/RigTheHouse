@@ -166,6 +166,7 @@ public class CardPackSelect : MonoBehaviour
             if (perkSelector)
             {
                 perkSelector.ItemManager = CarditemManager;
+                perkSelector.comboScreen = CarditemManager.comboScreen;
             }
             CarditemManager._items.Add(item);
 
