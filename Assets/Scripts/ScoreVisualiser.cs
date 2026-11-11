@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -145,6 +146,7 @@ public class ScoreVisualiser : MonoBehaviour
                 float cSize = Mathf.LerpUnclamped(sStart, sEnd, value);
                 trans.localScale = new(cSize, cSize, cSize);
             }
+            yield break;
         }
         while (curTime < lerpTime / 2)
         {
@@ -168,6 +170,8 @@ public class ScoreVisualiser : MonoBehaviour
         yield return null;
         StartCoroutine(Bounce(transform, 1, 0, 2, true));
         yield return Move(transform, transform.position, playerWalletVisual.position, 2f);
+        PlayerWallet.Instance.Cash += score;
+        transform.position = startPos;
 
 
     }

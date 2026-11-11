@@ -11,7 +11,6 @@ public class PerkManger : MonoBehaviour
 
     [SerializeField] public Dictionary<PerkBase, int[]> PerkTable;
     [SerializeField] private int _maxCodeLength;
-    [SerializeField] private ComboButtonIndicator comboButtonIndicator;
 
     InputAction R;
     InputAction B;
@@ -20,9 +19,11 @@ public class PerkManger : MonoBehaviour
 
     public List<PerkBase> ActivePerks = new();
 
+    public List<GameObject> perkObjects = new();
+
     public bool IsActive;
 
-    public Action<bool> OnCompletion;
+    public Action<bool, GameObject> OnCompletion;
 
     public Action OnScoreComplete;
 
@@ -36,7 +37,7 @@ public class PerkManger : MonoBehaviour
             Destroy(this);
         }
         Instance = this;
-        comboButtonIndicator.MaxCodeLen = _maxCodeLength;
+        ComboButtonIndicator.Instance.MaxCodeLen = _maxCodeLength;
         R = InputSystem.actions.FindAction("R");
         G = InputSystem.actions.FindAction("G");
         B = InputSystem.actions.FindAction("B");
@@ -46,16 +47,18 @@ public class PerkManger : MonoBehaviour
         G.performed += GA;
         B.performed += BA;
         Y.performed += YA;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     void RA(InputAction.CallbackContext callbackContext)
     {
-        AddInput(0);
+        AddInput(3);
     }
 
     void GA(InputAction.CallbackContext callbackContext)
     {
-        AddInput(1);
+        AddInput(0);
     }
 
     void BA(InputAction.CallbackContext callbackContext)
@@ -65,7 +68,7 @@ public class PerkManger : MonoBehaviour
 
     void YA(InputAction.CallbackContext callbackContext)
     {
-        AddInput(3);
+        AddInput(1);
     }
 
     // Update is called once per frame
@@ -85,8 +88,7 @@ public class PerkManger : MonoBehaviour
     public void RestartInput()
     {
         _curentCombo = new();
-        comboButtonIndicator.Reset();
-        print("Restarting");
+        ComboButtonIndicator.Instance.Reset();
     }
 
     void AddInput(int num)
@@ -95,9 +97,26 @@ public class PerkManger : MonoBehaviour
         {
             return;
         }
-        comboButtonIndicator.AddVisualIndicator(num);
+        if (ComboButtonIndicator.Instance == null)
+        {
+            if (gameObject == null)
+            {
+                Debug.LogWarning("WHAT THE FUCK");
+            }
+            else
+            {
+                Debug.LogWarning($"missing ComboButtonIndciator {gameObject.name}");
+            }
+        }
+        else
+        {
+            ComboButtonIndicator.Instance.AddVisualIndicator(num);
+        }
+
+
         _curentCombo.Add(num);
         CheckMatch();
+        print("CheckedMach");
     }
 
     void CheckMatch()
@@ -137,13 +156,14 @@ public class PerkManger : MonoBehaviour
         print(perk.gameObject.name);
 
         RestartInput();
-        OnCompletion?.Invoke(true);
+
         AddPerk(perk);
     }
 
     void AddPerk(PerkBase perk)
     {
-
+        perkObjects.Add(perk.gameObject);
+        OnCompletion?.Invoke(true, perk.gameObject);
         if (perk is PersistentPerk)
         {
             Type perkType = perk.GetType();
@@ -158,7 +178,7 @@ public class PerkManger : MonoBehaviour
     {
         print("failed");
         RestartInput();
-        OnCompletion?.Invoke(false);
+        OnCompletion?.Invoke(false, null);
     }
 }
 

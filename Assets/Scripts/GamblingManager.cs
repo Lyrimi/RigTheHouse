@@ -43,25 +43,25 @@ public class GamblingManager : MonoBehaviour
             RecaculateSymbolList();
         }
     }
-
+    Symbol[] gambaSymbols;
     public void Gamble()
     {
-        Symbol[] symbols = new Symbol[5];
+        gambaSymbols = new Symbol[5];
 
-        for (int i = 0; i < symbols.Length; i++)
+        for (int i = 0; i < gambaSymbols.Length; i++)
         {
-            symbols[i] = GetWeightedRandomSymbol();
+            gambaSymbols[i] = GetWeightedRandomSymbol();
         }
 
         string combined = "";
 
-        foreach (var item in symbols)
+        foreach (var item in gambaSymbols)
         {
             combined += $"{item.SymbolIndex} | ";
         }
 
         Debug.Log(combined);
-        PreHandleSymbols(symbols);
+        PreHandleSymbols(gambaSymbols);
     }
 
     public void RecaculateSymbolList()
@@ -69,7 +69,7 @@ public class GamblingManager : MonoBehaviour
         gameSymbols = _baseSymbols.ToList();
         foreach (var item in PerkManger.Instance.ActivePerks)
         {
-            item.ApplyStatChangeEffect();
+            item.ApplyStatChangeEffect(ref gameSymbols);
         }
     }
 
@@ -174,12 +174,18 @@ public class GamblingManager : MonoBehaviour
         foreach (var item in PerkManger.Instance.ActivePerks)
         {
             item.ApplyAfterScoreEffect(ref score, ref ScoreChanges);
+            if (item is PersistentPerk)
+            {
+                ((PersistentPerk)item).OnScoreComplete(gambaSymbols);
+            }
         }
         foreach (var item in ScoreChanges)
         {
             print($"{item.Item1} | {item.Item2}");
         }
         print(score);
+
+
 
 
 

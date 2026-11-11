@@ -14,7 +14,7 @@ public class PersistentPerk : PerkBase
 
     }
 
-    public virtual void OnScoreComplete()
+    public virtual void OnScoreComplete(Symbol[] gambaSymbols)
     {
 
     }

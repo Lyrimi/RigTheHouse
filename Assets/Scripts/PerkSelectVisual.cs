@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -6,6 +7,9 @@ public class PerkSelectVisual : MonoBehaviour
 {
     private ItemData _itemData;
     [SerializeField] private GameObject _textCanvas;
+    [SerializeField] private TMP_Text _text;
+
+    public PerkBase Perk;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,7 +17,7 @@ public class PerkSelectVisual : MonoBehaviour
         _itemData.OnSelect += OnSelect;
         _itemData.OnDeselect += OnDeselect;
         _textCanvas.SetActive(false);
-
+        _text.text = Perk.PerkDescription;
     }
 
     // Update is called once per frame
@@ -24,6 +28,10 @@ public class PerkSelectVisual : MonoBehaviour
 
     void OnSelect()
     {
+        if (_text.text != Perk.PerkDescription)
+        {
+            _text.text = Perk.PerkDescription;
+        }
         _textCanvas.SetActive(true);
     }
 

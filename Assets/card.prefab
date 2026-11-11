@@ -378,6 +378,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _textCanvas: {fileID: 1223211339954692717}
+  _text: {fileID: 1757260094829457002}
+  Perk: {fileID: 0}
 --- !u!114 &5513026444869015118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,3 +393,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   ItemManager: {fileID: 0}
+  CodeImage: {fileID: 0}

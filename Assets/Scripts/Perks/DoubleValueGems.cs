@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using static GamblingManager;
 public class DoubleValueGems : PerkBase
@@ -14,9 +15,8 @@ public class DoubleValueGems : PerkBase
 
     }
 
-    public override void ApplyStatChangeEffect()
+    public override void ApplyStatChangeEffect(ref List<Symbol> gameSymbols)
     {
-        base.ApplyStatChangeEffect();
 
         for (int i = 0; i < Instance.gameSymbols.Count; i++)
         {

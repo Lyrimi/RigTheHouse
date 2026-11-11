@@ -1,7 +1,12 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(ItemData))]
 public class ShopItem : MonoBehaviour
@@ -12,6 +17,8 @@ public class ShopItem : MonoBehaviour
     [SerializeField] private int _price;
     [SerializeField] Color _baseColor;
     [SerializeField] Color _poorColor;
+    [SerializeField] private SpawnAbleItem[] _cards;
+    public SpawnAbleItem[] Cards => _cards;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -52,7 +59,6 @@ public class ShopItem : MonoBehaviour
     void Purchase()
     {
         PlayerWallet.Instance.Cash -= _price;
-        print("Yeeted The text");
         StartCoroutine(YeetTheText(_priceVisualiser.transform.parent.gameObject, 3f));
     }
 
@@ -74,5 +80,56 @@ public class ShopItem : MonoBehaviour
         }
     }
 
+    public List<PerkBase> GetNumRandomWeightedPerks(int num)
+    {
+        List<PerkBase> selectedPerks = new();
 
+        List<SpawnAbleItem> cSpawnAbles = _cards.ToList();
+
+        for (int i = 0; i < num; i++)
+        {
+            SpawnAbleItem item = GetRandomWeightedPerk(cSpawnAbles);
+            if (item == null)
+            {
+                return selectedPerks;
+            }
+            selectedPerks.Add(item.Perk);
+            cSpawnAbles.Remove(item);
+        }
+
+
+
+        return selectedPerks;
+    }
+
+    SpawnAbleItem GetRandomWeightedPerk(List<SpawnAbleItem> spawnAbleItems)
+    {
+        float totalWeight = 0;
+
+        foreach (var item in spawnAbleItems)
+        {
+            totalWeight += item.Weight;
+        }
+
+        float random = Random.Range(0, totalWeight);
+
+        foreach (var item in spawnAbleItems)
+        {
+            random -= item.Weight;
+
+            if (random < 0)
+            {
+                return item;
+            }
+
+        }
+        return null;
+    }
+
+}
+[Serializable]
+public class SpawnAbleItem
+{
+    public PerkBase Perk;
+    public float Weight;
 }

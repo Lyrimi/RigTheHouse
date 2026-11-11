@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class PerkBase : MonoBehaviour
 {
+    public int MaxAmount = -1;
 
+    [TextArea] public string PerkDescription;
     //Perk
     //PreEvalPerk
 
@@ -19,7 +21,7 @@ public class PerkBase : MonoBehaviour
 
     }
 
-    public virtual void ApplyStatChangeEffect()
+    public virtual void ApplyStatChangeEffect(ref List<Symbol> gameSymbols)
     {
 
     }

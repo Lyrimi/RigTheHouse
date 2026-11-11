@@ -385,8 +385,7 @@ MonoBehaviour:
   _spawnThresehold: 0.7
   _countToSpawn: 3
   _distance: 4
-  _prefabs:
-  - {fileID: 6582243490486020170, guid: 4b88d17e3760f144ab9c9593367cc102, type: 3}
+  _prefab: {fileID: 6582243490486020170, guid: 4b88d17e3760f144ab9c9593367cc102, type: 3}
   _targetShakeSpeed: 0.1
   _startShakeSpeed: 1
 --- !u!114 &7280768152136135164
@@ -419,3 +418,8 @@ MonoBehaviour:
   _price: 3
   _baseColor: {r: 1, g: 1, b: 1, a: 1}
   _poorColor: {r: 1, g: 0, b: 0, a: 1}
+  _cards:
+  - Perk: {fileID: -7768947450395087377, guid: c06c5b4137078e247b985c2c3e7d3b8f, type: 3}
+    Weight: 1
+  - Perk: {fileID: -6635976458225520486, guid: b4dcd05d28215d24cbf0dcbd283b6ef3, type: 3}
+    Weight: 1

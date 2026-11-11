@@ -10,12 +10,15 @@ public class ItemSelectVisual : MonoBehaviour
     [SerializeField] private float _lerpSize = 1;
 
     [SerializeField] private float _lerpTime = 1;
+    SpriteRenderer spriteRenderer;
     ItemData _itemData;
-
+    int defRendLayer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     float _startSize;
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        defRendLayer = spriteRenderer.sortingOrder;
         _startSize = transform.localScale.x;
         _itemData = GetComponent<ItemData>();
         _itemData.OnSelect += OnSelect;
@@ -27,6 +30,7 @@ public class ItemSelectVisual : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(SpringBounce(transform.localScale.x, _lerpSize));
 
+        spriteRenderer.sortingOrder = defRendLayer + 1;
     }
     void OnDeselect()
     {
@@ -36,6 +40,7 @@ public class ItemSelectVisual : MonoBehaviour
         }
         StopAllCoroutines();
         StartCoroutine(SpringBounce(transform.localScale.x, _startSize));
+        spriteRenderer.sortingOrder = defRendLayer;
     }
 
 

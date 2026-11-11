@@ -24,7 +24,6 @@ public class PlayerWalletVisual : MonoBehaviour
 
     void UpdateText()
     {
-        print("TEXT UPDATED");
         int cashAmount = (int)PlayerWallet.Instance.Cash;
         _text.text = $"{cashAmount}";
     }

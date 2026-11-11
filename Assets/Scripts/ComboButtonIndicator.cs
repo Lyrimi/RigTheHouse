@@ -8,10 +8,12 @@ public class ComboButtonIndicator : MonoBehaviour
     [SerializeField] private float _distance;
     public int MaxCodeLen;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    public static ComboButtonIndicator Instance;
 
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        Instance = this;
     }
 
     // Update is called once per frame

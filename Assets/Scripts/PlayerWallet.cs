@@ -24,11 +24,17 @@ public class PlayerWallet : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            Destroy(this);
+        }
         Instance = this;
     }
     void Start()
     {
         Cash = _startingCash;
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame

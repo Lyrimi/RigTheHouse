@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 [RequireComponent(typeof(ItemData))]
@@ -14,7 +15,7 @@ public class CardPackSelect : MonoBehaviour
     [SerializeField] private float _spawnThresehold;
     [SerializeField] private int _countToSpawn;
     [SerializeField] private float _distance;
-    [SerializeField] private GameObject[] _prefabs;
+    [SerializeField] private GameObject _prefab;
     [NonSerialized] public Transform StartPos;
     [NonSerialized] public ItemManager CarditemManager;
     [NonSerialized] public Transform MovePoint;
@@ -41,7 +42,7 @@ public class CardPackSelect : MonoBehaviour
 
     void OnActivate()
     {
-        print("CardDidStuff");
+
         if (_shopItem.AtemptPurchase())
         {
             ShopItemManager._items.Remove(_itemData);
@@ -138,15 +139,28 @@ public class CardPackSelect : MonoBehaviour
     void SpawnItems()
     {
         CarditemManager._items = new();
+
+        List<PerkBase> perks = _shopItem.GetNumRandomWeightedPerks(_countToSpawn);
+
+        if (perks.Count < _countToSpawn)
+        {
+            _countToSpawn = perks.Count;
+        }
+
         float startx = StartPos.position.x - (_distance / 2 * (_countToSpawn - 1));
         for (int i = 0; i < _countToSpawn; i++)
         {
             float cx = startx + _distance * i;
             Vector3 spawnPos = StartPos.position;
             spawnPos.x = cx;
-            GameObject obj = Instantiate(_prefabs[0], transform.position, Quaternion.identity);
+            GameObject obj = Instantiate(_prefab, transform.position, Quaternion.identity);
+
+            AsignSpriteFromPerk(obj, perks[i]);
 
             ItemData item = obj.GetComponent<ItemData>();
+
+            PerkSelectVisual perkSelectVisual = obj.GetComponent<PerkSelectVisual>();
+            perkSelectVisual.Perk = perks[i];
 
             PerkSelector perkSelector = obj.GetComponent<PerkSelector>();
             if (perkSelector)
@@ -157,8 +171,25 @@ public class CardPackSelect : MonoBehaviour
 
             StartCoroutine(MoveObjToPos(obj, transform.position, spawnPos, _spawnMoveTime));
         }
-
     }
+
+    void AsignSpriteFromPerk(GameObject IObj, PerkBase perk)
+    {
+        SpriteRenderer iObjRend = IObj.GetComponent<SpriteRenderer>();
+        if (iObjRend == null)
+        {
+            Debug.LogWarning("IGameObject Doesn't have a sprite render, adding one");
+            iObjRend = gameObject.AddComponent<SpriteRenderer>();
+        }
+
+        SpriteRenderer perkRend = perk.gameObject.GetComponent<SpriteRenderer>();
+        if (perkRend == null)
+        {
+            throw new Exception("Perk doesn't have a spritrender");
+        }
+        iObjRend.sprite = perkRend.sprite;
+    }
+
     IEnumerator MoveObjToPos(GameObject obj, Vector3 startPos, Vector3 endPos, float moveTime)
     {
         float curTime = 0f;

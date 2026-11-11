@@ -22,7 +22,7 @@ public class ItemManager : MonoBehaviour
         _sellectAction = InputSystem.actions.FindAction("Select");
         _moveAction.performed += Move;
         _sellectAction.performed += SelectItem;
-        print("Start Ran");
+
     }
 
     // Update is called once per frame
@@ -58,7 +58,6 @@ public class ItemManager : MonoBehaviour
         {
             return;
         }
-        print($"{index}, {_items.Count}, {index < 0}, {index > _items.Count}");
         if (_items[index].gameObject.activeInHierarchy)
         {
             _items[index].IsSelected = false;
@@ -79,7 +78,6 @@ public class ItemManager : MonoBehaviour
 
     public void Move(int value)
     {
-        print(index);
         _items[index].IsSelected = false;
         index = value switch
         {
@@ -96,7 +94,7 @@ public class ItemManager : MonoBehaviour
         {
             return;
         }
-        print("Item Selcted");
+
         var selectItem = _items[index].GetComponent<CardPackSelect>();
         if (selectItem)
         {

@@ -3955,6 +3955,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2563533839604890898, guid: 010890929b4ce764c90d026d2278a07b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563533839604890898, guid: 010890929b4ce764c90d026d2278a07b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563533839604890898, guid: 010890929b4ce764c90d026d2278a07b, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563533839604890898, guid: 010890929b4ce764c90d026d2278a07b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563533839604890898, guid: 010890929b4ce764c90d026d2278a07b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563533839604890898, guid: 010890929b4ce764c90d026d2278a07b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563533839604890898, guid: 010890929b4ce764c90d026d2278a07b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563533839604890898, guid: 010890929b4ce764c90d026d2278a07b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4256295098764510314, guid: 010890929b4ce764c90d026d2278a07b, type: 3}
       propertyPath: m_Name
       value: PlayerWalletDisplay
@@ -4042,6 +4074,14 @@ PrefabInstance:
     - target: {fileID: 6719847318962845727, guid: 010890929b4ce764c90d026d2278a07b, type: 3}
       propertyPath: m_text
       value: 23 $
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719847318962845727, guid: 010890929b4ce764c90d026d2278a07b, type: 3}
+      propertyPath: m_margin.w
+      value: 1.8136575
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719847318962845727, guid: 010890929b4ce764c90d026d2278a07b, type: 3}
+      propertyPath: m_margin.y
+      value: 1.4754171
       objectReference: {fileID: 0}
     - target: {fileID: 7299504582476513129, guid: 010890929b4ce764c90d026d2278a07b, type: 3}
       propertyPath: m_SortingOrder

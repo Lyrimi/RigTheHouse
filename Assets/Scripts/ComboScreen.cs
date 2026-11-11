@@ -17,6 +17,8 @@ public class ComboScreen : MonoBehaviour
 
     private SpriteRenderer _spriteRenderer;
 
+    public CodeVisualiser CodeVisualiser;
+
     public bool WatingAnyInput = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -24,6 +26,7 @@ public class ComboScreen : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         Instance = this;
         StartPostion = transform.position;
+        CodeVisualiser = GetComponent<CodeVisualiser>();
     }
 
     // Update is called once per frame
@@ -103,26 +106,30 @@ public class ComboScreen : MonoBehaviour
         //Some straight up bs right here
         yield return LerpPostion(StartPostion, 0.5f);
         yield return LerpPostion(RevelPos.position, 0.5f, WatingComboScreen.transform);
+        CodeVisualiser.EndHightLight();
         PerkManger.Instance.IsActive = true;
         PerkManger.Instance.RestartInput();
         PerkManger.Instance.OnCompletion += Finished;
     }
     Animator animator;
-    public void Finished(bool Completed)
+    public void Finished(bool Completed, GameObject perkObj)
     {
         PerkManger.Instance.IsActive = false;
-        StartCoroutine(FinishScreen(Completed));
+        StartCoroutine(FinishScreen(Completed, perkObj));
     }
 
-    IEnumerator FinishScreen(bool Completed)
+    [SerializeField] private SpriteRenderer _finishCardRend;
+    IEnumerator FinishScreen(bool Completed, GameObject perkObj)
     {
 
         if (Completed)
         {
+            _finishCardRend.sprite = perkObj.GetComponent<SpriteRenderer>().sprite;
             animator.SetTrigger("CheatActivated");
         }
         else
         {
+            _finishCardRend.sprite = CodeVisualiser.Perk.gameObject.GetComponent<SpriteRenderer>().sprite;
             animator.SetTrigger("CheatFailed");
         }
         yield return null;

@@ -16,11 +16,14 @@ public class PerkSelector : MonoBehaviour
 
     [SerializeField] private Sprite CodeImage;
 
+    private PerkSelectVisual perkSelectVisual;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _itemData = GetComponent<ItemData>();
         _itemData.Activate += PerkChosen;
+        perkSelectVisual = GetComponent<PerkSelectVisual>();
     }
 
     // Update is called once per frame
@@ -86,6 +89,8 @@ public class PerkSelector : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         ComboScreen comboScreen = ComboScreen.Instance;
+
+        comboScreen.CodeVisualiser.StartHightlight(perkSelectVisual.Perk);
 
         comboScreen.LerpPos(comboScreen.RevelPos.position, 0.5f, DestroyThis);
 
