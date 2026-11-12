@@ -1,4 +1,6 @@
+using System;
 using TMPro;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -34,7 +36,8 @@ public class BuyRounds : MonoBehaviour
         {
             print("Bought");
             PlayerWallet.Instance.Cash -= (int)statStorage.BuyRoundsPrice;
-            statStorage.BuyRoundsPrice *= 1.2f;
+            statStorage.RoundsBought += 1;
+            statStorage.BuyRoundsPrice = MathF.Pow(1.01f, statStorage.RoundsBought) * 2 * statStorage.RoundsBought + 1;
             UpdateText();
             PlayerWallet.Instance.RemaningSpins++;
         }

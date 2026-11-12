@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatStorage
   StartBuyRoundsPrice: 2
   BuyRoundsPrice: 3
+  RoundsBought: 0
+  HighestScore: 540
+  IsFirstSpin: 0

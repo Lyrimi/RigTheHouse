@@ -19,6 +19,8 @@ public class GamblingManager : MonoBehaviour
 
     InputAction selectAction;
 
+    [SerializeField] private StatStorage statStorage;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,6 +34,11 @@ public class GamblingManager : MonoBehaviour
         Instance = this;
         RecaculateSymbolList();
         selectAction.performed += Input;
+    }
+
+    void OnDestroy()
+    {
+        selectAction.performed -= Input;
     }
 
     // Update is called once per frame
@@ -58,6 +65,19 @@ public class GamblingManager : MonoBehaviour
     public bool isSpining;
     public void Gamble()
     {
+        if (statStorage.IsFirstSpin)
+        {
+            gambaSymbols = new Symbol[5];
+            gambaSymbols[0] = gameSymbols[0];
+            gambaSymbols[1] = gameSymbols[1];
+            gambaSymbols[2] = gameSymbols[1];
+            gambaSymbols[3] = gameSymbols[1];
+            gambaSymbols[4] = gameSymbols[2];
+            statStorage.IsFirstSpin = false;
+            PreHandleSymbols(gambaSymbols);
+            return;
+
+        }
         RecaculateSymbolList();
         if (isSpining)
         {
@@ -208,11 +228,10 @@ public class GamblingManager : MonoBehaviour
             print($"{item.Item1} | {item.Item2}");
         }
         print(score);
-
-
-
-
-
+        if (statStorage.HighestScore < score)
+        {
+            statStorage.HighestScore = score;
+        }
     }
 
     void FinishedGambaAnim()

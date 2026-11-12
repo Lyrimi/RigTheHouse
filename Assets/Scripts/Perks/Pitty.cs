@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Pitty : PersistentPerk
 {
-    int currentMisses = 0;
+    int currentMisses = 1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void OnScoreComplete(Symbol[] gambaSymbols, float score)
     {
@@ -11,7 +11,7 @@ public class Pitty : PersistentPerk
 
         if (score > 0)
         {
-            currentMisses = 0;
+            currentMisses = 1;
         }
         else
         {

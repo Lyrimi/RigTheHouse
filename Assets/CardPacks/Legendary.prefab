@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _priceVisualiser: {fileID: 2039414073676935952}
-  _price: 30
+  _price: 250
   _baseColor: {r: 1, g: 1, b: 1, a: 1}
   _poorColor: {r: 1, g: 0, b: 0, a: 1}
   universalCardPool: {fileID: 11400000, guid: 5ea78122105ed9344b30811b4248e227, type: 2}

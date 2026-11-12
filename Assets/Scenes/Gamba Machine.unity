@@ -5077,46 +5077,6 @@ PrefabInstance:
       propertyPath: FinishedText
       value: 
       objectReference: {fileID: 1776302206}
-    - target: {fileID: 8820370483062477384, guid: 3dab8468eae18684697dcfbda3056555, type: 3}
-      propertyPath: _baseSymbols.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820370483062477384, guid: 3dab8468eae18684697dcfbda3056555, type: 3}
-      propertyPath: _baseSymbols.Array.data[3].Value
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820370483062477384, guid: 3dab8468eae18684697dcfbda3056555, type: 3}
-      propertyPath: _baseSymbols.Array.data[4].Value
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820370483062477384, guid: 3dab8468eae18684697dcfbda3056555, type: 3}
-      propertyPath: _baseSymbols.Array.data[5].Value
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820370483062477384, guid: 3dab8468eae18684697dcfbda3056555, type: 3}
-      propertyPath: _baseSymbols.Array.data[3].Weight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820370483062477384, guid: 3dab8468eae18684697dcfbda3056555, type: 3}
-      propertyPath: _baseSymbols.Array.data[4].Weight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820370483062477384, guid: 3dab8468eae18684697dcfbda3056555, type: 3}
-      propertyPath: _baseSymbols.Array.data[5].Weight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820370483062477384, guid: 3dab8468eae18684697dcfbda3056555, type: 3}
-      propertyPath: _baseSymbols.Array.data[3].SymbolIndex
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820370483062477384, guid: 3dab8468eae18684697dcfbda3056555, type: 3}
-      propertyPath: _baseSymbols.Array.data[4].SymbolIndex
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8820370483062477384, guid: 3dab8468eae18684697dcfbda3056555, type: 3}
-      propertyPath: _baseSymbols.Array.data[5].SymbolIndex
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

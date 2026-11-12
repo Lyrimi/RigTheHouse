@@ -46,31 +46,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _baseSymbols:
   - SymbolIndex: 0
-    Weight: 4
-    Value: 2
+    Weight: 3
+    Value: 7
     Identifyer: Emerald
   - SymbolIndex: 1
-    Weight: 4
-    Value: 3
+    Weight: 1
+    Value: 15
     Identifyer: Golden Idol
   - SymbolIndex: 2
-    Weight: 1
-    Value: 4
+    Weight: 0.5
+    Value: 50
     Identifyer: Jackpot
   - SymbolIndex: 3
-    Weight: 2
-    Value: 4
+    Weight: 3
+    Value: 5
     Identifyer: Ruby
   - SymbolIndex: 4
-    Weight: 2
+    Weight: 3
     Value: 4
     Identifyer: Saphire
   - SymbolIndex: 5
-    Weight: 2
-    Value: 4
+    Weight: 1
+    Value: 13
     Identifyer: Silver Idol
   gameSymbols: []
   _debugButton: 0
   _debugButton2: 0
+  statStorage: {fileID: 11400000, guid: fcce1775c7d9eb14da52a63f77cd5d4e, type: 2}
   isSpining: 0
   FinishedText: {fileID: 0}

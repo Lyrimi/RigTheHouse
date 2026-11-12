@@ -13,6 +13,11 @@ public class Return : MonoBehaviour
         enter.performed += GoToShop;
     }
 
+    void OnDestroy()
+    {
+        enter.performed -= GoToShop;
+    }
+
     // Update is called once per frame
     void Update()
     {

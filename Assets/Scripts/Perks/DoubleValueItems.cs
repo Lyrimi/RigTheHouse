@@ -4,7 +4,7 @@ using static GamblingManager;
 public class DoubleValueItems : PerkBase
 {
     [SerializeField] private int[] symbolsToAffect;
-    [SerializeField] private float mult = 2;
+    [SerializeField] private float aditon = 2;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,7 +27,7 @@ public class DoubleValueItems : PerkBase
                 if (Instance.gameSymbols[i].SymbolIndex == item)
                 {
                     Symbol symbol = Instance.gameSymbols[i];
-                    symbol.Value *= mult;
+                    symbol.Value += aditon;
                     Instance.gameSymbols[i] = symbol;
                 }
             }

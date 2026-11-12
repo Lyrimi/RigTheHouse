@@ -29,6 +29,12 @@ public class ItemManager : MonoBehaviour
     {
     }
 
+    void OnDestroy()
+    {
+        _moveAction.performed -= Move;
+        _sellectAction.performed -= SelectItem;
+    }
+
     public void Init()
     {
         if (index < 0 || index > _items.Count)
